@@ -411,4 +411,4 @@ public Graficos() throws GameLogicException {
 }
 ```
 
-Luego sigiendo la el esquem de draw io crearemos todas la clases que aparecezen en todos los paquete, aqui os dejo el link al commit que 
+Luego sigiendo la el esquem de draw io crearemos todas la clases que aparecezen en todos los paquete, aqui os dejo el link al commit que para que os descargeis las clases.
