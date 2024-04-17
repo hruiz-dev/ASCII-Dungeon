@@ -1,6 +1,10 @@
 package render;
 
+import data.Estatikoa;
 import data.Formak;
+import data.GameObject;
+import data.Vector2;
+import data.exceptions.GameLogicException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,15 +13,15 @@ public class Graficos {
 
     private static final int X_CANVAS_SIZE = 1056;
     private static final int Y_CANVAS_SIZE = 720;
-    private static final int X_GRID_SIZE = 66;
-    private static final int Y_GRID_SIZE = 45;
+    public static final int X_GRID_SIZE = 66;
+    public static final int Y_GRID_SIZE = 45;
     private static final int CELL_SIZE = 16;
 
-    private Formak[][] matrix = new Formak[X_GRID_SIZE][Y_GRID_SIZE];
+    private GameObject[][] matrix = new GameObject[X_GRID_SIZE][Y_GRID_SIZE];
 
     private JPanel panel;
 
-    public Graficos() {
+    public Graficos() throws GameLogicException {
         JFrame frame = new JFrame();
         panel = new JPanel() {
             @Override
@@ -28,7 +32,7 @@ public class Graficos {
                         int x = i * CELL_SIZE;
                         int y = j * CELL_SIZE;
                         if (matrix[i][j] != null) {
-                            g.drawImage(matrix[i][j].getIrudia(), x, y, CELL_SIZE, CELL_SIZE, this);
+                            g.drawImage(matrix[i][j].getForma().getIrudia(), x, y, CELL_SIZE, CELL_SIZE, this);
                         } else {
                             g.setColor(Color.BLACK);
                             g.fillRect(x, y, CELL_SIZE, CELL_SIZE);
@@ -43,8 +47,10 @@ public class Graficos {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         for (int i = 0; i < X_GRID_SIZE; i++) {
-            for (int j = 0; j < 35; j++) {
-                matrix[i][j] = Formak.WALL;
+            for (int j = 0; j < 25; j++) {
+               if ((j + i) % 2 == 0) {
+                   matrix[i][j] = new Estatikoa(Formak.WALL, new Vector2(i, j));
+               }
             }
         }
     }
@@ -53,7 +59,11 @@ public class Graficos {
         panel.repaint();
     }
 
-    public void updateMatrix(Formak[][] newMatrix) {
+    /**
+     * Metodo honek matriz berri bat jasotzen du eta panela eguneratzen du.
+     * @param newMatrix Matriz berria.
+     */
+    public void updateMatrix(GameObject[][] newMatrix) {
         this.matrix = newMatrix;
         render();
     }

@@ -5,8 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
+/**
+ * Klase honeta gure acii karakterak eta iruaduak mapeatzeko erabiliko dugu.
+ */
 public enum Formak {
     WALL('#', "assets/pareta.png"),
     ;
