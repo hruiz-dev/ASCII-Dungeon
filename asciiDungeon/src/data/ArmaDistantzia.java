@@ -17,7 +17,8 @@ public class ArmaDistantzia extends Arma {
     }
 
     @Override
-    void update() {
+    public GameObject[][] update() {
+        return null;
         //TODO: metodo honek armak munizioa badu bala bat disparatu du n direzioan
     }
 }

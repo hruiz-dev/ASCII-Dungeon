@@ -411,4 +411,11 @@ public Graficos() throws GameLogicException {
 }
 ```
 
-Luego sigiendo la el esquem de draw io crearemos todas la clases que aparecezen en todos los paquete, aqui os dejo el link al commit que para que os descargeis las clases.
+Luego siguiendo  el esquema de draw io crearemos todas la clases que aparecezen en todos los paquetes, aqui os dejo el link al commit que para que os descargeis las clases [Enlace](https://github.com/hruiz-dev/ASCII-Dungeon/archive/e0fff33e81f8efc4aea29bcec74566bd02e83a75.zip).
+
+## Dia tres 18/04/2024
+
+Lo que he hecho:
+
+- GameKeyListener klasea sortu eta implementatu
+

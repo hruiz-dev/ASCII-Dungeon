@@ -1,12 +1,12 @@
 package data;
 
-public class Montroa extends GameObject{
+public class Monstroa extends GameObject{
 
     private int bizia;
     private int atakea;
     private int mugimenduDirezioa;
 
-    public Montroa(Formak forma, Vector2 posizioa, int bizia, int atakea, int mugimenduDirezioa) {
+    public Monstroa(Formak forma, Vector2 posizioa, int bizia, int atakea, int mugimenduDirezioa) {
         super(forma, posizioa);
         this.bizia = bizia;
         this.atakea = atakea;
@@ -38,7 +38,8 @@ public class Montroa extends GameObject{
     }
 
     @Override
-    void update() {
+    public GameObject[][] update() {
+        return null;
         //TODO: Monstroa mugitzea edo ez segun mugimenduDirezioa konfigurazioa, monstrok mina egitea, montroak bizi edukitzea
     }
 }

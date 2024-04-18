@@ -34,5 +34,5 @@ public abstract class GameObject {
     /**
      * Metodo honek gure GameObjetaren funtzionalitatea ejekutatuko du.
      */
-    abstract void update();
+    abstract GameObject[][] update();
 }

@@ -1,9 +1,6 @@
 package render;
 
-import data.Estatikoa;
-import data.Formak;
-import data.GameObject;
-import data.Vector2;
+import data.*;
 import data.exceptions.GameLogicException;
 
 import javax.swing.*;
@@ -17,12 +14,13 @@ public class Graficos {
     public static final int Y_GRID_SIZE = 45;
     private static final int CELL_SIZE = 16;
 
-    private GameObject[][] matrix = new GameObject[X_GRID_SIZE][Y_GRID_SIZE];
+    private static GameObject[][] matrix = new GameObject[X_GRID_SIZE][Y_GRID_SIZE];
 
     private JPanel panel;
 
     public Graficos() throws GameLogicException {
         JFrame frame = new JFrame();
+        frame.addKeyListener(new GameKeyListener());
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -49,10 +47,14 @@ public class Graficos {
         for (int i = 0; i < X_GRID_SIZE; i++) {
             for (int j = 0; j < 25; j++) {
                if ((j + i) % 2 == 0) {
-                   matrix[i][j] = new Estatikoa(Formak.WALL, new Vector2(i, j));
+                   matrix[i][j] = new Estatikoa(Formak.FLOOR, new Vector2(i, j));
                }
             }
         }
+    }
+
+    public static GameObject[][] getMatrix() {
+        return matrix;
     }
 
     public void render() {

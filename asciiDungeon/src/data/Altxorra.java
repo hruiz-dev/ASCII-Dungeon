@@ -18,7 +18,8 @@ public class Altxorra extends GameObject{
     }
 
     @Override
-    void update() {
+    public GameObject[][] update() {
+        return null;
         // TODO: altxorra irekitzea, degarsatzea eta objetua emateko funtzionalitatea implementatu
     }
 }

@@ -18,7 +18,7 @@ public class Armadura extends Item{
     }
 
     @Override
-    void update() {
-
+    public GameObject[][] update() {
+        return null;
     }
 }

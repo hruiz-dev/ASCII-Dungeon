@@ -18,7 +18,8 @@ public class Arma extends Item {
     }
 
     @Override
-    void update() {
+    public GameObject[][] update() {
+        return null;
         // TODO: Cuando ataque que haga daño
     }
 }

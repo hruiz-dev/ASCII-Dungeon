@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public enum Formak {
     WALL('#', "assets/pareta.png"),
-    ;
+    FLOOR('-', "assets/lurra.png");
 
     private final char symbol;
     private final Image irudia;

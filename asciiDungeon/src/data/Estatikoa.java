@@ -1,5 +1,7 @@
 package data;
 
+import render.Graficos;
+
 public class Estatikoa extends GameObject{
 
     public Estatikoa(Formak forma, Vector2 posizioa) {
@@ -7,7 +9,8 @@ public class Estatikoa extends GameObject{
     }
 
     @Override
-    void update() {
+    public GameObject[][] update() {
         // Do nothing
+        return Graficos.getMatrix();
     }
 }
