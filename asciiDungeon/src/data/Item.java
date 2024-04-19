@@ -1,5 +1,10 @@
 package data;
 
+import data.noInteractive.Formak;
+
+/**
+ * Klase honek erabilgarriak diren objetu guztien aita da
+ */
 public abstract class Item extends GameObject {
 
     private String izena;

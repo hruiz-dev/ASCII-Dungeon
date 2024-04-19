@@ -1,24 +1,40 @@
 package data;
 
 import data.exceptions.GameLogicException;
+import data.noInteractive.Formak;
+import kalkuloak.GameMain;
 
+/**
+ * Klase hau gure jokoko objetu guztien aita da.
+ */
 public abstract class GameObject {
     private Vector2 posizioa;
     private Formak forma;
 
-    protected GameObject(Formak forma, Vector2 posizioa) {
+    public GameObject(Formak forma, Vector2 posizioa) {
         this.forma = forma;
         this.posizioa = posizioa;
+        GameMain a = GameMain.getGameMain();
+        a.getObjetuak().add(this);
     }
+
+    /**
+     * Kontruktera hau Estatikoak diren
+     * @param forma
+     */
+    public GameObject(Formak forma) {
+        this.forma = forma;
+    }
+
 
     public int getX() {
         return posizioa.getX();
     }
 
-    public void setPosizioa(int x, int y) throws GameLogicException {
-        this.posizioa = new Vector2(x, y);
-    }
-
+    /**
+     * Metodo honek gure GameObjetaren posizioa aldatuko du.
+     * @param posizioa Posizio berria Vector2 klasea erabilita.
+     */
     public void setPosizioa(Vector2 posizioa) {
         this.posizioa = posizioa;
     }
@@ -34,5 +50,5 @@ public abstract class GameObject {
     /**
      * Metodo honek gure GameObjetaren funtzionalitatea ejekutatuko du.
      */
-    abstract GameObject[][] update();
+    public abstract GameObject[][] update();
 }

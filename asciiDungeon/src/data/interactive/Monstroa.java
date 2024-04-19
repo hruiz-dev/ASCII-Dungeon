@@ -1,6 +1,10 @@
-package data;
+package data.interactive;
 
-public class Monstroa extends GameObject{
+import data.GameObject;
+import data.Vector2;
+import data.noInteractive.Formak;
+
+public class Monstroa extends GameObject {
 
     private int bizia;
     private int atakea;
@@ -37,6 +41,10 @@ public class Monstroa extends GameObject{
         this.mugimenduDirezioa = mugimenduDirezioa;
     }
 
+    /**
+     * Metodo honek mugimenduDirezioa aldagaila erabilita montraa patroi ezberdinekin mugituko da.
+     * @return GameObject[][] - Monstroaren posizio berria
+     */
     @Override
     public GameObject[][] update() {
         return null;

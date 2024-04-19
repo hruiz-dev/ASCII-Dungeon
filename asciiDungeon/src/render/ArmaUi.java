@@ -1,10 +1,13 @@
 package render;
 
-import data.Arma;
-import data.Estatikoa;
-import data.Formak;
+import data.interactive.Arma;
+import data.noInteractive.Estatikoa;
+import data.noInteractive.Formak;
 import data.Vector2;
 
+/**
+ * Klase hau arma badugu hau interfazean agertzeaz arduratzen da
+ */
 public class ArmaUi extends Ui{
 
     private Arma[] armak = new Arma[2];

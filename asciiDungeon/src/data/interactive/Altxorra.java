@@ -1,6 +1,14 @@
-package data;
+package data.interactive;
 
-public class Altxorra extends GameObject{
+import data.noInteractive.Formak;
+import data.GameObject;
+import data.Item;
+import data.Vector2;
+
+/**
+ * Objetua honetan gure partdan zear eduki al ditugun altxorrak dira, hauek guk nahi dugu Item mota gorde alko dute.
+ */
+public class Altxorra extends GameObject {
 
     private Item objetua;
 
@@ -17,6 +25,10 @@ public class Altxorra extends GameObject{
         this.objetua = objetua;
     }
 
+    /**
+     * Funtzi honek gure altxorra irrekitzean eta irakitakoan Item a jokalariari emateaz arduratuko da.
+     * @return Matriza aktualizatuta.
+     */
     @Override
     public GameObject[][] update() {
         return null;

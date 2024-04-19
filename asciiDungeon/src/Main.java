@@ -1,12 +1,8 @@
-import render.Graficos;
+import kalkuloak.GameMain;
 
 public class Main {
     public static void main(String[] args) {
-     try {
-         Graficos a = new Graficos();
-         a.render();
-     } catch (Exception e) {
-         e.printStackTrace();
-     }
+        GameMain gameMain = GameMain.getGameMain();
+        gameMain.init();
     }
 }

@@ -1,5 +1,8 @@
 package data.exceptions;
 
+/**
+ * Exception hau gure matriz sistema arazoak daudeanean ejekutazeko erabiliko dugu
+ */
 public class GameLogicException extends Exception {
 
     public GameLogicException(String message) {

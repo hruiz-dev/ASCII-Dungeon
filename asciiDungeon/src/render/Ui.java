@@ -1,10 +1,12 @@
 package render;
 
-import data.Estatikoa;
-import data.Formak;
-import data.GameObject;
+import data.noInteractive.Estatikoa;
+import data.noInteractive.Formak;
 import data.Vector2;
 
+/**
+ * Klase hau gure interfazeako komponeteak sortzeko aita klasea da.
+ */
 public abstract class Ui {
     private Vector2 posizioa;
     private Formak[][] datuak;

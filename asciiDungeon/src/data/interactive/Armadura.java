@@ -1,6 +1,14 @@
-package data;
+package data.interactive;
 
-public class Armadura extends Item{
+import data.noInteractive.Formak;
+import data.GameObject;
+import data.Item;
+import data.Vector2;
+
+/**
+ * Objetu honek armadura bat da, defentsa gehiago ematen duena jokalariari
+ */
+public class Armadura extends Item {
 
     private int defentsa;
 
@@ -17,6 +25,10 @@ public class Armadura extends Item{
         this.defentsa = defentsa;
     }
 
+    /**
+     * Lurrean dagoen bitartean jokalariak armadura artu algo du, gero jokalaria jotzen duten bakoitzean mina gutxitzen du
+     * @return
+     */
     @Override
     public GameObject[][] update() {
         return null;

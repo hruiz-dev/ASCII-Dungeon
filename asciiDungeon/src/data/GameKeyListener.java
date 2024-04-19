@@ -1,10 +1,13 @@
 package data;
 
+import data.exceptions.GameLogicException;
+import data.interactive.Jokalaria;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Klase honetan gure jokuko kontrolak edukiko ditugu.
+ * Klase honetan gure jokoko kontrolak edukiko ditugu.
  */
 public class GameKeyListener implements KeyListener {
     @Override
@@ -14,21 +17,28 @@ public class GameKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        Jokalaria a;
+        try {
+            a = Jokalaria.getJokalaria();
+
+        } catch (GameLogicException ex) {
+            throw new RuntimeException(ex);
+        }
 
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            System.out.println("W sakatuta");
+            a.setAzkenZapaldutakoTekla('w');
 
         }
 
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            System.out.println("A sakatuta");
+            a.setAzkenZapaldutakoTekla('a');
         }
 
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            System.out.println("S sakatuta");
+            a.setAzkenZapaldutakoTekla('s');
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            System.out.println("D sakatuta");
+            a.setAzkenZapaldutakoTekla('d');
         }
 
     }

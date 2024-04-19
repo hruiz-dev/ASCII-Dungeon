@@ -1,4 +1,8 @@
-package data;
+package data.interactive;
+
+import data.noInteractive.Formak;
+import data.GameObject;
+import data.Vector2;
 
 public class ArmaDistantzia extends Arma {
 
@@ -16,6 +20,10 @@ public class ArmaDistantzia extends Arma {
         this.munizioa = munizioa;
     }
 
+    /**
+     * Ez dakit nola antolatu oraindik
+     * @return
+     */
     @Override
     public GameObject[][] update() {
         return null;

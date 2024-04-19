@@ -1,9 +1,12 @@
 package render;
 
-import data.Estatikoa;
-import data.Formak;
+import data.noInteractive.Estatikoa;
+import data.noInteractive.Formak;
 import data.Vector2;
 
+/**
+ * Klase hau gure giltza katitatea erakusteaz arduratzen da.
+ */
 public class Giltzak extends Ui{
 
     private int giltzak;

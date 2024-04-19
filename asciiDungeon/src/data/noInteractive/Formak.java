@@ -1,4 +1,4 @@
-package data;
+package data.noInteractive;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,7 +11,8 @@ import java.io.IOException;
  */
 public enum Formak {
     WALL('#', "assets/pareta.png"),
-    FLOOR('-', "assets/lurra.png");
+    FLOOR('-', "assets/lurra.png"),
+    PLAYER('@', "assets/jokalaria.png");
 
     private final char symbol;
     private final Image irudia;

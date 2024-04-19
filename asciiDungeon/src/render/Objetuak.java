@@ -1,12 +1,15 @@
 package render;
 
-import data.Estatikoa;
-import data.Formak;
+import data.noInteractive.Estatikoa;
+import data.noInteractive.Formak;
 import data.Item;
 import data.Vector2;
 
 import java.util.List;
 
+/**
+ * Klasea honek gure motxila diitugun objetuak erakutsiko ditu.
+ */
 public class Objetuak extends Ui{
 
     private List<Item> objetuak;
