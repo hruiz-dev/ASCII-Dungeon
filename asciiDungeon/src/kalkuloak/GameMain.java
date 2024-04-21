@@ -1,8 +1,11 @@
 package kalkuloak;
 
+import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.GameObject;
 import data.exceptions.GameLogicException;
+import data.noInteractive.Formak;
+import render.GraficsConfig;
 import render.Layers;
 import render.Ui;
 
@@ -20,7 +23,9 @@ public class GameMain {
     private List<GameObject> objetuak = new ArrayList<>();
     private List<Ui> uiKomponenteak = new ArrayList<>();
 
-    private GameObject[][] mapa;
+    private Layers mapa = new Layers(0, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
+    private Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
+    private Layers ui = new Layers(0, GraficsConfig.UI_X_GRID_SIZE, GraficsConfig.UI_Y_GRID_SIZE, GraficsConfig.UI_X_CANVAS_SIZE, GraficsConfig.UI_Y_CANVAS_SIZE);
 
     private boolean jokoaMartxan = true;
 
@@ -28,13 +33,15 @@ public class GameMain {
      * Metodo honek gure jokoaren eragiketa logikoak egingo ditu.
      */
     public void gameLoop() {
-        mapa = Layers.getMatrix();
+        testFunction();
+
         while (jokoaMartxan) {
             if (objetuak != null) {
                 List<GameObject> toUpdate = new ArrayList<>(objetuak);
                 for (GameObject go : toUpdate) {
                     if (!go.getClass().equals(Estatikoa.class)) {
-                        mapa = go.update();
+                        interactables.updateMatrix(go.update());
+                        mapa.render();
                     }
                 }
                 objetuak = toUpdate;
@@ -66,14 +73,24 @@ public class GameMain {
                 ui.updateUi();
             }
         }
+    }
+
+    public void testFunction(){
+        GameObject[][] a = interactables.getMatrix();
         try {
-            Layers.getGraficos().updateMatrix(mapa);
-            Thread.sleep(100);
+            a[1][1] = Jokalaria.getJokalaria();
         } catch (GameLogicException e) {
             throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
+        interactables.updateMatrix(a);
+
+        GameObject[][] b = mapa.getMatrix();
+        for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
+            for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
+                b[i][j] = new Estatikoa(Formak.FLOOR);
+            }
+        }
+        mapa.updateMatrix(b);
     }
 
     public void gameOver() {
@@ -101,5 +118,17 @@ public class GameMain {
 
     public void setUiKomponenteak(List<Ui> uiKomponenteak) {
         this.uiKomponenteak = uiKomponenteak;
+    }
+
+    public Layers getMapa() {
+        return mapa;
+    }
+
+    public Layers getUi() {
+        return ui;
+    }
+
+    public Layers getInteractables() {
+        return interactables;
     }
 }

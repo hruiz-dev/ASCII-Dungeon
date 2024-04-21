@@ -2,7 +2,6 @@ package data;
 
 import data.exceptions.GameLogicException;
 import render.GraficsConfig;
-import render.Layers;
 
 /**
  * Klase simple bat x eta y posizioak gordetzeko.
@@ -30,7 +29,7 @@ public class Vector2 {
      * @throws GameLogicException Posizioa matrizetik kampo badago jautiko da
      */
     public void setX(int x) throws GameLogicException {
-        if (x < GraficsConfig.X_GRID_SIZE){
+        if (x < GraficsConfig.GAME_X_GRID_SIZE){
             if (x >= 0) {
                 this.x = x;
             } else {
@@ -38,7 +37,7 @@ public class Vector2 {
                 throw new GameLogicException("Posizioa ezin da tablerotik atera. x="+ x + -1);
             }
         } else {
-            this.x = GraficsConfig.X_GRID_SIZE - 1;
+            this.x = GraficsConfig.GAME_X_GRID_SIZE - 1;
             throw new GameLogicException("Posizioa ezin da tablerotik atera. x=" + x + 1);
         }
     }
@@ -49,7 +48,7 @@ public class Vector2 {
      * @throws GameLogicException Posizioa matrizetik kampo badago jautiko da
      */
     public void setY(int y) throws GameLogicException {
-        if (y < GraficsConfig.Y_GRID_SIZE){
+        if (y < GraficsConfig.GAME_Y_GRID_SIZE){
             if (y >= 0) {
                 this.y = y;
             } else {
@@ -57,7 +56,7 @@ public class Vector2 {
                 throw new GameLogicException("Posizioa ezin da tablerotik atera. y="+ y + -1);
             }
         } else {
-            this.y = GraficsConfig.Y_GRID_SIZE - 1;
+            this.y = GraficsConfig.GAME_Y_GRID_SIZE - 1;
             throw new GameLogicException("Posizioa ezin da tablerotik atera. x=" + y + 1);
         }
     }

@@ -2,6 +2,7 @@ package data.noInteractive;
 
 import data.GameObject;
 import data.Vector2;
+import kalkuloak.GameMain;
 import render.Layers;
 
 /**
@@ -9,8 +10,10 @@ import render.Layers;
  */
 public class Estatikoa extends GameObject {
 
-    public Estatikoa(Formak forma, Vector2 posizioa) {
-        super(forma, posizioa);
+    private GameMain gameMain = GameMain.getGameMain();
+
+    public Estatikoa(Formak forma) {
+        super(forma);
     }
 
     /**
@@ -20,6 +23,6 @@ public class Estatikoa extends GameObject {
     @Override
     public GameObject[][] update() {
         // Do nothing
-        return Layers.getMatrix();
+        return gameMain.getInteractables().getMatrix();
     }
 }

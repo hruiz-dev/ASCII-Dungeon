@@ -3,68 +3,37 @@ package data.interactive;
 import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
+import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import kalkuloak.GameMain;
 import render.GraficsConfig;
 
-public class Jokalaria extends GameObject {
+/**
+ * Klase hau gure jokoko mapak sortzeko erabiliko dugu.
+ */
+public class MapCreator extends GameObject {
 
-    private static Jokalaria jokalaria;
-    private int bizia = 10;
-    private Arma arma;
-    private Armadura armadura;
-    private int giltzak;
+    private static MapCreator mapCreator;
     private char azkenZapaldutakoTekla;
 
     private GameMain gameMain = GameMain.getGameMain();
 
-    private Jokalaria(Formak forma, Vector2 posizioa) {
+    private MapCreator(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
     }
 
     /**
-     * Funtzi honek jokalariaren instantzia aktuala bueltatzen du
+     * Funtzio honek jokalariaren instantzia aktuala bueltatzen du
      * @return Jokalaria instantzia
      * @throws GameLogicException Vector2 klaseak jaurtiko duen exzepzioac
      */
-    public static Jokalaria getJokalaria() throws GameLogicException {
-        if (jokalaria == null) {
-            jokalaria = new Jokalaria(Formak.PLAYER, new Vector2(1, 1));
+    public static MapCreator getJokalaria() throws GameLogicException {
+        if (mapCreator == null) {
+            mapCreator = new MapCreator(Formak.PLAYER, new Vector2(1, 1));
         }
-        return jokalaria;
+        return mapCreator;
     }
 
-    public int getBizia() {
-        return bizia;
-    }
-
-    public void setBizia(int bizia) {
-        this.bizia = bizia;
-    }
-
-    public Arma getArma() {
-        return arma;
-    }
-
-    public void setArma(Arma arma) {
-        this.arma = arma;
-    }
-
-    public Armadura getArmadura() {
-        return armadura;
-    }
-
-    public void setArmadura(Armadura armadura) {
-        this.armadura = armadura;
-    }
-
-    public int getGiltzak() {
-        return giltzak;
-    }
-
-    public void setGiltzak(int giltzak) {
-        this.giltzak = giltzak;
-    }
 
     public char getAzkenZapaldutakoTekla() {
         return azkenZapaldutakoTekla;
@@ -88,7 +57,7 @@ public class Jokalaria extends GameObject {
         GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
 
         try {
-            matrizea[getX()][getY()] = null;
+            matrizea[getX()][getY()] = new Estatikoa(Formak.FLOOR);
             setPosizioa(new Vector2(getX() + x, getY() + y));
         } catch (GameLogicException e) {
             System.out.println("Matrizearen limetean zaude posizio honeatik ezin gara juan");

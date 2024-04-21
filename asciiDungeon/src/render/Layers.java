@@ -1,8 +1,6 @@
 package render;
 
 import data.*;
-import data.exceptions.GameLogicException;
-import data.interactive.Jokalaria;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,51 +10,52 @@ import java.awt.*;
  */
 public class Layers {
 
-    private static Layers graficos;
 
 //TODO: Metodo honek koleren renderizazioa kontrolatzea falta zait, segun layer mota fonfoa beltza edo transparente izatea
 
-    private static GameObject[][] matrix = new GameObject[GraficsConfig.X_GRID_SIZE][GraficsConfig.Y_GRID_SIZE];
+    private GameObject[][] matrix = new GameObject[GraficsConfig.GAME_X_GRID_SIZE][GraficsConfig.GAME_Y_GRID_SIZE];
 
     private JPanel panel;
 
-    public static Layers getGraficos() throws GameLogicException {
-        if (graficos == null) {
-            graficos = new Layers();
-        }
-        return graficos;
-    }
-
-    private Layers() throws GameLogicException {
-        JFrame frame = new JFrame();
-        frame.addKeyListener(new GameKeyListener());
+    public Layers(int layerType, int xGridSize, int yGridSize, int xCanvasSize, int yCanvasSize) {
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                for (int i = 0; i < GraficsConfig.X_GRID_SIZE; i++) {
-                    for (int j = 0; j < GraficsConfig.Y_GRID_SIZE; j++) {
+                Graphics2D g2d = (Graphics2D) g.create();
+                for (int i = 0; i < xGridSize; i++) {
+                    for (int j = 0; j < yGridSize; j++) {
                         int x = i * GraficsConfig.CELL_SIZE;
                         int y = j * GraficsConfig.CELL_SIZE;
                         if (matrix[i][j] != null) {
-                            g.drawImage(matrix[i][j].getForma().getIrudia(), x, y, GraficsConfig.CELL_SIZE, GraficsConfig.CELL_SIZE, this);
+                            g2d.setComposite(AlphaComposite.SrcOver);
+                            g2d.drawImage(matrix[i][j].getForma().getIrudia(), x, y, GraficsConfig.CELL_SIZE, GraficsConfig.CELL_SIZE, this);
                         } else {
-                            g.setColor(Color.BLACK);
-                            g.fillRect(x, y, GraficsConfig.CELL_SIZE, GraficsConfig.CELL_SIZE);
+                            if (layerType == 1) {
+                                g2d.setColor(new Color(0, 0, 0, 0));
+                                g2d.fillRect(x, y, GraficsConfig.CELL_SIZE, GraficsConfig.CELL_SIZE);
+                            } else {
+                                g2d.setColor(Color.BLACK);
+                                g2d.fillRect(x, y, GraficsConfig.CELL_SIZE, GraficsConfig.CELL_SIZE);
+                            }
                         }
                     }
                 }
+                g2d.dispose();
             }
         };
-        panel.setPreferredSize(new Dimension(GraficsConfig.X_CANVAS_SIZE, GraficsConfig.Y_CANVAS_SIZE));
-        frame.add(panel);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        matrix[1][1] = Jokalaria.getJokalaria();
+        panel.setPreferredSize(new Dimension(xCanvasSize, yCanvasSize));
+        panel.setBounds(0, 0, xCanvasSize, yCanvasSize);
+        if (layerType == 1) {
+            panel.setOpaque(false);
+        }
     }
 
-    public static GameObject[][] getMatrix() {
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public GameObject[][] getMatrix() {
         return matrix;
     }
 

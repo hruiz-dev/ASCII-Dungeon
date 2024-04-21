@@ -418,5 +418,10 @@ Luego siguiendo  el esquema de draw io crearemos todas la clases que aparecezen 
 Lo que he hecho:
 
 - GameKeyListener klasea sortu eta implementatu
-- Canviar sistema a un sistema de layers para poder paratar lo reactivo de lo que no es reactivo
+- implemetar mogimiento de jugador
+- Canbiar sistema a un sistema de layers para poder separar lo reactivo de lo que no es reactivo
+- Modificar el metodo de renderizado para que puda renderizar cosas transparentes
 
+## Dia cuatro 21/04/2024
+
+- Crear un nuevo layaout para crear un apartado de UI, este se pondra al lado de la interfaz de juego, para eso canviar la funcion layaut para que poder pasar los parametros del tamaño del canvas. PAra hacer eoso he cambioado los componentes que componen el frame.
