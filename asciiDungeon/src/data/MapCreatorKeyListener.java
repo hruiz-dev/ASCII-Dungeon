@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Klase honetan gure jokoko kontrolak edukiko ditugu.
+ * Klase honetan gure mapa sortzailearen tekelen kudeaketa egingo dugu.
  */
 public class MapCreatorKeyListener implements KeyListener {
     MapCreator a;

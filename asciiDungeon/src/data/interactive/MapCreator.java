@@ -16,6 +16,8 @@ public class MapCreator extends GameObject {
     private static MapCreator mapCreator;
     private char azkenZapaldutakoTekla;
 
+    private GameObject objetua = new Estatikoa(Formak.FLOOR);
+
     private GameMain gameMain = GameMain.getGameMain();
 
     private MapCreator(Formak forma, Vector2 posizioa) {
@@ -57,7 +59,7 @@ public class MapCreator extends GameObject {
         GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
 
         try {
-            matrizea[getX()][getY()] = new Estatikoa(Formak.FLOOR);
+            matrizea[getX()][getY()] = objetua;
             setPosizioa(new Vector2(getX() + x, getY() + y));
         } catch (GameLogicException e) {
             System.out.println("Matrizearen limetean zaude posizio honeatik ezin gara juan");
@@ -67,6 +69,10 @@ public class MapCreator extends GameObject {
         return matrizea;
     }
 
+    /**
+     * Funtzi honek mapCretor objetuaren posizioa aldatzen duen funtzioa da.
+     * @return posizioa aldatuta duen objetua
+     */
     @Override
     public GameObject[][] update() {
         GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
@@ -79,9 +85,18 @@ public class MapCreator extends GameObject {
             matrizea = mugitu(0, 1);
         } else if (azkenZapaldutakoTekla == 'd') {
             matrizea = mugitu(1, 0);
+        } else if (azkenZapaldutakoTekla == '1') {
+            objetua = new Estatikoa(Formak.WALL);
+        } else if (azkenZapaldutakoTekla == '2') {
+            objetua = new Estatikoa(Formak.FLOOR);
+        } else if (azkenZapaldutakoTekla == '3') {
+            objetua = new Estatikoa(Formak.ENEMY);
+        } else if (azkenZapaldutakoTekla == '5') {
+            objetua = new Estatikoa(Formak.DOOR);
+        } else if (azkenZapaldutakoTekla == '6'){
+            objetua = new Estatikoa(Formak.KEY);
         }
         azkenZapaldutakoTekla = ' ';
         return matrizea;
-        //TODO: Jokalariaren mogimendua eta kolisioak kudeatu
     }
 }
