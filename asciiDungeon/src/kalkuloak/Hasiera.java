@@ -1,14 +1,24 @@
+package kalkuloak;
+
 import data.GameKeyListener;
-import kalkuloak.GameMain;
+import data.MapCreatorData;
 import render.GraficsConfig;
+import render.Layers;
+import render.Menu;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Main {
+public class Hasiera {
     public static void main(String[] args) {
-        GameMain gameMain = GameMain.getGameMain();
+        new Menu();
+    }
 
+    /**
+     * Metodo honek gure jokoaren hasieratzea burutzen du.
+     */
+    public static void startGame(){
+        GameMain gameMain = GameMain.getGameMain();
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.add(gameMain.getMapa().getPanel(), JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(gameMain.getInteractables().getPanel(), JLayeredPane.PALETTE_LAYER);
@@ -22,6 +32,14 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         gameMain.init();
+    }
 
+    public static void startMapBuilder(){
+        JFrame frame = new JFrame();
+
+        frame.add(MapCreatorData.getMapCreatorData().getMap().getPanel());
+        frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + 16, GraficsConfig.GAME_Y_CANVAS_SIZE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }
