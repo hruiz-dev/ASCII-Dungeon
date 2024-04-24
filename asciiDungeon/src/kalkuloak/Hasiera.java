@@ -38,21 +38,18 @@ public class Hasiera {
     public static void startMapBuilder(){
         JFrame frame = new JFrame();
         MapCreatorMain a = MapCreatorMain.getMapCreatorData();
-
-        JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.add(a.getMap().getPanel(), JLayeredPane.DEFAULT_LAYER);
-        layeredPane.add(a.getInteractables().getPanel(), JLayeredPane.PALETTE_LAYER);
-
-        frame.add(layeredPane);
+        frame.add(a.getMapCreatorData().getMap().getPanel());
         frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + 16, GraficsConfig.GAME_Y_CANVAS_SIZE);
-        frame.addWindowListener(new WindowAdapter() {
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addKeyListener(new MapCreatorKeyListener());
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 a.stop();
             }
         });
-        frame.addKeyListener(new MapCreatorKeyListener());
         frame.setVisible(true);
-        a.init();
+        new Thread(a::init).start();
+
     }
 }

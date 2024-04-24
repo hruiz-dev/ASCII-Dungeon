@@ -54,6 +54,6 @@ public abstract class GameObject {
 
     @Override
     public String toString() {
-        return Character.toString(getForma().getSymbol());
+        return Character.toString(forma.getSymbol());
     }
 }

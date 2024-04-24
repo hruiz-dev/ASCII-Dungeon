@@ -6,6 +6,7 @@ import data.exceptions.GameLogicException;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import kalkuloak.GameMain;
+
 import kalkuloak.MapCreatorMain;
 import render.GraficsConfig;
 
@@ -18,7 +19,6 @@ public class MapCreator extends GameObject {
     private char azkenZapaldutakoTekla;
 
     private GameObject objetua = new Estatikoa(Formak.FLOOR);
-    private Boolean intereactive = false;
     private static MapCreatorMain gameMain = MapCreatorMain.getMapCreatorData();
 
     private MapCreator(Formak forma, Vector2 posizioa) {
@@ -65,13 +65,6 @@ public class MapCreator extends GameObject {
         if (x > GraficsConfig.GAME_X_GRID_SIZE || y > GraficsConfig.GAME_Y_GRID_SIZE) {
             return gameMain.getMap().getMatrix();
         }
-        if (intereactive) {
-            return updateInteractive(x, y);
-        }
-        return updateBackground(x, y);
-    }
-
-    public GameObject[][] updateBackground(int x, int y){
         GameObject[][] matrizea = gameMain.getMap().getMatrix();
         try {
             matrizea[getX()][getY()] = objetua;
@@ -127,13 +120,8 @@ public class MapCreator extends GameObject {
             intereactive = true;
         } else if (azkenZapaldutakoTekla == '6'){
             objetua = new Estatikoa(Formak.KEY);
-            intereactive = true;
         } else if (azkenZapaldutakoTekla == '+'){
             objetua = null;
-            intereactive = true;
-        } else if (azkenZapaldutakoTekla == '-') {
-            objetua = null;
-            intereactive = false;
         }
         azkenZapaldutakoTekla = ' ';
         return matrizea;

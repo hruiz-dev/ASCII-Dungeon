@@ -19,8 +19,8 @@ public class MapCreatorKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        a = MapCreator.getJokalaria();
 
-            a = MapCreator.getJokalaria();
 
         if (e.getKeyCode() == KeyEvent.VK_W) {
             a.setAzkenZapaldutakoTekla('w');
