@@ -7,8 +7,6 @@ import kalkuloak.GameMain;
 
 public class Giltza extends GameObject {
 
-    private Vector2 atearenPosizioa;
-
     public Giltza(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
     }

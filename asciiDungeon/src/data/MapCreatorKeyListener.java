@@ -20,16 +20,10 @@ public class MapCreatorKeyListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        try {
             a = MapCreator.getJokalaria();
-
-        } catch (GameLogicException ex) {
-            throw new RuntimeException(ex);
-        }
 
         if (e.getKeyCode() == KeyEvent.VK_W) {
             a.setAzkenZapaldutakoTekla('w');
-
         }
 
         if (e.getKeyCode() == KeyEvent.VK_A) {
@@ -60,8 +54,11 @@ public class MapCreatorKeyListener implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_6) {
             a.setAzkenZapaldutakoTekla('6');
         }
-        if (e.getKeyCode() == KeyEvent.VK_7) {
-            a.setAzkenZapaldutakoTekla('7');
+        if (e.getKeyCode() == KeyEvent.VK_P) {
+            a.setAzkenZapaldutakoTekla('+');
+        }
+        if (e.getKeyCode() == KeyEvent.VK_L) {
+            a.setAzkenZapaldutakoTekla('-');
         }
 
     }

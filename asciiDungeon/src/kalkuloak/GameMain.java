@@ -41,12 +41,11 @@ public class GameMain {
                 for (GameObject go : toUpdate) {
                     if (!go.getClass().equals(Estatikoa.class)) {
                         interactables.updateMatrix(go.update());
-                        mapa.render();
+
                     }
                 }
                 objetuak = toUpdate;
             }
-            render();
         }
         gameOver();
     }
@@ -66,11 +65,15 @@ public class GameMain {
      * Metodo hau gure Ui objetu guztiak atualizatuko ditu. eta gero joka renderizatuko du.
      */
     public void render() {
-        if (uiKomponenteak != null) {
-            Iterator<Ui> iterator = uiKomponenteak.iterator();
-            while (iterator.hasNext()) {
-                Ui ui = iterator.next();
-                ui.updateUi();
+        while (jokoaMartxan) {
+            if (uiKomponenteak != null) {
+                Iterator<Ui> iterator = uiKomponenteak.iterator();
+                while (iterator.hasNext()) {
+                    Ui ui = iterator.next();
+                    ui.updateUi();
+                }
+                mapa.render();
+                this.ui.render();
             }
         }
     }
@@ -101,7 +104,9 @@ public class GameMain {
      * Metodo honek gura jokuaren loop-a hasiko du beste thread batean.
      */
     public void init() {
-        gameLoop();
+        // Hari ezberdinak erabiliz gure jukoaren logika eta renderizazio klakuloak separatzen ditugu
+        new Thread(this::gameLoop).start();
+        new Thread(this::render).start();
     }
 
     public List<GameObject> getObjetuak() {

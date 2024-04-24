@@ -51,4 +51,9 @@ public abstract class GameObject {
      * Metodo honek gure GameObjetaren funtzionalitatea ejekutatuko du.
      */
     public abstract GameObject[][] update();
+
+    @Override
+    public String toString() {
+        return Character.toString(getForma().getSymbol());
+    }
 }
