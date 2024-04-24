@@ -1,9 +1,8 @@
 package kalkuloak;
 
 import data.GameKeyListener;
-import data.MapCreatorData;
+import data.MapCreatorKeyListener;
 import render.GraficsConfig;
-import render.Layers;
 import render.Menu;
 
 import javax.swing.*;
@@ -36,10 +35,19 @@ public class Hasiera {
 
     public static void startMapBuilder(){
         JFrame frame = new JFrame();
+        MapCreatorMain a = MapCreatorMain.getMapCreatorData();
 
-        frame.add(MapCreatorData.getMapCreatorData().getMap().getPanel());
+        frame.add(a.getMapCreatorData().getMap().getPanel());
         frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + 16, GraficsConfig.GAME_Y_CANVAS_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addKeyListener(new MapCreatorKeyListener());
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                a.stop();
+            }
+        });
         frame.setVisible(true);
+        new Thread(a::init).start();
     }
 }
