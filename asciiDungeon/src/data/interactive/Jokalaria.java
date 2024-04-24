@@ -16,14 +16,14 @@ public class Jokalaria extends GameObject {
     private int giltzak;
     private char azkenZapaldutakoTekla;
 
-    private GameMain gameMain = GameMain.getGameMain();
+    private static GameMain gameMain = GameMain.getGameMain();
 
     private Jokalaria(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
     }
 
     /**
-     * Funtzi honek jokalariaren instantzia aktuala bueltatzen du
+     * Funtzio honek jokalariaren instantzia aktuala bueltatzen du
      * @return Jokalaria instantzia
      * @throws GameLogicException Vector2 klaseak jaurtiko duen exzepzioac
      */
@@ -91,7 +91,7 @@ public class Jokalaria extends GameObject {
             matrizea[getX()][getY()] = null;
             setPosizioa(new Vector2(getX() + x, getY() + y));
         } catch (GameLogicException e) {
-            System.out.println("Matrizearen limetean zaude posizio honeatik ezin gara juan");
+            System.out.println("Matrizearen limetean zaude posizio honeatik ezin gara joan");
         }
 
         matrizea[this.getX()][this.getY()] = this;
@@ -115,4 +115,5 @@ public class Jokalaria extends GameObject {
         return matrizea;
         //TODO: Jokalariaren mogimendua eta kolisioak kudeatu
     }
+
 }

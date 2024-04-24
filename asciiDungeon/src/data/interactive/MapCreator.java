@@ -4,7 +4,9 @@ import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
 import data.noInteractive.Estatikoa;
-import data.noInteractive.Formak;import kalkuloak.GameMain;
+import data.noInteractive.Formak;
+import kalkuloak.GameMain;
+
 import kalkuloak.MapCreatorMain;
 import render.GraficsConfig;
 
@@ -21,6 +23,10 @@ public class MapCreator extends GameObject {
 
     private MapCreator(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
+    }
+
+    public Boolean getIntereactive() {
+        return intereactive;
     }
 
     /**
@@ -71,6 +77,19 @@ public class MapCreator extends GameObject {
         return matrizea;
     }
 
+    public GameObject[][] updateInteractive(int x, int y){
+        GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
+
+        try {
+            matrizea[getX()][getY()] = objetua;
+            setPosizioa(new Vector2(getX() + x, getY() + y));
+        } catch (GameLogicException e) {
+            System.out.println("Matrizearen limetean zaude posizio honeatik ezin gara joan");
+        }
+        matrizea[this.getX()][this.getY()] = this;
+        return matrizea;
+    }
+
     /**
      * Funtzi honek mapCretor objetuaren posizioa aldatzen duen funtzioa da.
      * @return posizioa aldatuta duen objetua
@@ -89,12 +108,16 @@ public class MapCreator extends GameObject {
             matrizea = mugitu(1, 0);
         } else if (azkenZapaldutakoTekla == '1') {
             objetua = new Estatikoa(Formak.WALL);
+            intereactive = false;
         } else if (azkenZapaldutakoTekla == '2') {
             objetua = new Estatikoa(Formak.FLOOR);
+            intereactive = false;
         } else if (azkenZapaldutakoTekla == '3') {
             objetua = new Estatikoa(Formak.ENEMY);
+            intereactive = true;
         } else if (azkenZapaldutakoTekla == '5') {
             objetua = new Estatikoa(Formak.DOOR);
+            intereactive = true;
         } else if (azkenZapaldutakoTekla == '6'){
             objetua = new Estatikoa(Formak.KEY);
         } else if (azkenZapaldutakoTekla == '+'){

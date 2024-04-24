@@ -17,7 +17,6 @@ public class MapCreatorMain { ;
     public void setMap(Layers map) {
         this.background = map;
     }
-
     public static MapCreatorMain getMapCreatorData(){
         if (mapCreatorMain == null){
             mapCreatorMain = new MapCreatorMain();
@@ -50,6 +49,7 @@ public class MapCreatorMain { ;
     public void stop() {
 //TODO
         String s1;
+
         StringBuilder sb = new StringBuilder();
 
         for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
@@ -68,6 +68,7 @@ public class MapCreatorMain { ;
         try (FileWriter file = new FileWriter("map1Background.txt")) {
             file.write(s1);
             System.out.println("Mapako Backgrounda gordeta");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

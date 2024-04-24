@@ -7,6 +7,8 @@ import render.Menu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Hasiera {
     public static void main(String[] args) {
@@ -36,7 +38,6 @@ public class Hasiera {
     public static void startMapBuilder(){
         JFrame frame = new JFrame();
         MapCreatorMain a = MapCreatorMain.getMapCreatorData();
-
         frame.add(a.getMapCreatorData().getMap().getPanel());
         frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + 16, GraficsConfig.GAME_Y_CANVAS_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,5 +50,6 @@ public class Hasiera {
         });
         frame.setVisible(true);
         new Thread(a::init).start();
+
     }
 }
