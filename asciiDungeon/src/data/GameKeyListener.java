@@ -17,13 +17,8 @@ public class GameKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        Jokalaria a;
-        try {
-            a = Jokalaria.getJokalaria();
+        Jokalaria a = Jokalaria.getJokalaria();
 
-        } catch (GameLogicException ex) {
-            throw new RuntimeException(ex);
-        }
 
         if (e.getKeyCode() == KeyEvent.VK_W) {
             a.setAzkenZapaldutakoTekla('w');

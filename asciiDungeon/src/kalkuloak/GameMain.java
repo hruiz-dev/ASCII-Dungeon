@@ -34,7 +34,7 @@ public class GameMain {
      * Metodo honek gure jokoaren eragiketa logikoak egingo ditu.
      */
     public void gameLoop() {
-        testFunction();
+//        testFunction();
 
         while (jokoaMartxan) {
             if (objetuak != null) {
@@ -89,14 +89,13 @@ public class GameMain {
         }
         interactables.updateMatrix(a);
 
-        // Testak egiteko funtzioa
-//        GameObject[][] b = mapa.getMatrix();
-//        for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
-//            for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
-//                b[i][j] = new Estatikoa(Formak.FLOOR);
-//            }
-//        }
-//        mapa.updateMatrix(b);
+        GameObject[][] b = mapa.getMatrix();
+        for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
+            for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
+                b[i][j] = new Estatikoa(Formak.FLOOR);
+            }
+        }
+        mapa.updateMatrix(b);
     }
 
     public void gameOver() {

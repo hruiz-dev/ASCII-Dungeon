@@ -33,6 +33,7 @@ public class Hasiera {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         gameMain.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa1Atzekaldea.txt"));
+        gameMain.getInteractables().updateMatrix(MapLoader.kargatuBackground("mapa1Interaktiboa.txt"));
         gameMain.init();
     }
 

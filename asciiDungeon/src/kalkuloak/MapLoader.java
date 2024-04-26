@@ -1,6 +1,9 @@
 package kalkuloak;
 
 import data.GameObject;
+import data.Vector2;
+import data.exceptions.GameLogicException;
+import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import render.GraficsConfig;
@@ -23,10 +26,15 @@ public class MapLoader {
             while ((line = br.readLine()) != null) {
                 for (int j = 0; j < line.length(); j++) {
                         map[j][i] = kargatuObjetua(line.charAt(j));
+                        if (map[j][i] instanceof Jokalaria) {
+                            Jokalaria.getJokalaria().setPosizioa(new Vector2(j, i));
+                        }
                 }
                 i++;
             }
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (GameLogicException e) {
             throw new RuntimeException(e);
         }
         // testak egiteko
@@ -50,6 +58,16 @@ public class MapLoader {
             return new Estatikoa(Formak.WALL);
         } else if (symbol == Formak.FLOOR.getSymbol()) {
             return new Estatikoa(Formak.FLOOR);
+        } else if (symbol == Formak.PLAYER.getSymbol()) {
+            return Jokalaria.getJokalaria();
+        } else if (symbol == Formak.ENEMY.getSymbol()) {
+            return new Estatikoa(Formak.ENEMY);
+        } else if (symbol == Formak.KEY.getSymbol()) {
+            return new Estatikoa(Formak.KEY);
+        } else if (symbol == Formak.DOOR.getSymbol()) {
+            return new Estatikoa(Formak.DOOR);
+        } else if (symbol == Formak.TREASURE.getSymbol()) {
+            return new Estatikoa(Formak.TREASURE);
         }
         return null;
     }

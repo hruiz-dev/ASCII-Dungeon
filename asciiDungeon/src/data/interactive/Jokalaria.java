@@ -27,9 +27,13 @@ public class Jokalaria extends GameObject {
      * @return Jokalaria instantzia
      * @throws GameLogicException Vector2 klaseak jaurtiko duen exzepzioac
      */
-    public static Jokalaria getJokalaria() throws GameLogicException {
+    public static Jokalaria getJokalaria() {
         if (jokalaria == null) {
-            jokalaria = new Jokalaria(Formak.PLAYER, new Vector2(0, 0));
+            try {
+                jokalaria = new Jokalaria(Formak.PLAYER, new Vector2(0, 0));
+            } catch (GameLogicException e) {
+                throw new RuntimeException(e);
+            }
         }
         return jokalaria;
     }
