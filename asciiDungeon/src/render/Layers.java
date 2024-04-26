@@ -13,11 +13,12 @@ public class Layers {
 
 //TODO: Metodo honek koleren renderizazioa kontrolatzea falta zait, segun layer mota fonfoa beltza edo transparente izatea
 
-    private GameObject[][] matrix = new GameObject[GraficsConfig.GAME_X_GRID_SIZE][GraficsConfig.GAME_Y_GRID_SIZE];
+    private GameObject[][] matrix;
 
     private JPanel panel;
 
     public Layers(int layerType, int xGridSize, int yGridSize, int xCanvasSize, int yCanvasSize) {
+        matrix = new GameObject[xGridSize][yGridSize];
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {

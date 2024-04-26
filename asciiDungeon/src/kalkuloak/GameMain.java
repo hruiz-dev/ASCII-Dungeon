@@ -1,5 +1,6 @@
 package kalkuloak;
 
+import data.Vector2;
 import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.GameObject;
@@ -81,19 +82,21 @@ public class GameMain {
     public void testFunction(){
         GameObject[][] a = interactables.getMatrix();
         try {
-            a[1][1] = Jokalaria.getJokalaria();
+            a[3][4] = Jokalaria.getJokalaria();
+            Jokalaria.getJokalaria().setPosizioa(new Vector2(3, 4));
         } catch (GameLogicException e) {
             throw new RuntimeException(e);
         }
         interactables.updateMatrix(a);
 
-        GameObject[][] b = mapa.getMatrix();
-        for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
-            for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
-                b[i][j] = new Estatikoa(Formak.FLOOR);
-            }
-        }
-        mapa.updateMatrix(b);
+        // Testak egiteko funtzioa
+//        GameObject[][] b = mapa.getMatrix();
+//        for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
+//            for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
+//                b[i][j] = new Estatikoa(Formak.FLOOR);
+//            }
+//        }
+//        mapa.updateMatrix(b);
     }
 
     public void gameOver() {

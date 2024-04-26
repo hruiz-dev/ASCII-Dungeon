@@ -29,7 +29,7 @@ public class Jokalaria extends GameObject {
      */
     public static Jokalaria getJokalaria() throws GameLogicException {
         if (jokalaria == null) {
-            jokalaria = new Jokalaria(Formak.PLAYER, new Vector2(1, 1));
+            jokalaria = new Jokalaria(Formak.PLAYER, new Vector2(0, 0));
         }
         return jokalaria;
     }
