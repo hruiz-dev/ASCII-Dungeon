@@ -28,7 +28,7 @@ public class Layers {
                         int x = i * GraficsConfig.CELL_SIZE;
                         int y = j * GraficsConfig.CELL_SIZE;
                         if (matrix[i][j] != null) {
-                            g2d.setComposite(AlphaComposite.Src);
+                            g2d.setComposite(AlphaComposite.SrcOver);
                             g2d.drawImage(matrix[i][j].getForma().getIrudia(), x, y, GraficsConfig.CELL_SIZE, GraficsConfig.CELL_SIZE, this);
                         } else {
                             if (layerType == 1) {
