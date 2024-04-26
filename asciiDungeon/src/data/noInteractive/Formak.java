@@ -15,7 +15,8 @@ public enum Formak {
     PLAYER('@', "assets/jokalaria.png"),
     ENEMY('E', "assets/troll.png"),
     DOOR('D', "assets/atea.png"),
-    KEY('K', "assets/giltza.png");
+    KEY('K', "assets/giltza.png"),
+    TREASURE('T', "assets/altxorra.png");
     private final char symbol;
     private final Image irudia;
 
