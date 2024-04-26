@@ -87,6 +87,10 @@ public class Jokalaria extends GameObject {
         }
         GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
 
+        if (kolisioa(x, y)) {
+            return matrizea;
+        }
+
         try {
             matrizea[getX()][getY()] = null;
             setPosizioa(new Vector2(getX() + x, getY() + y));
@@ -96,6 +100,17 @@ public class Jokalaria extends GameObject {
 
         matrizea[this.getX()][this.getY()] = this;
         return matrizea;
+    }
+
+    /**
+     * Funtzi honek hurrengo mapako kasila pareta den kombrobatzen du eta hau pareta bada true itzuiltzen du
+     * @param x X ejean zenbat mugitu den
+     * @param y Y ejean zenbat mugitu den
+     * @return kasila pareta bada true itzultzen du
+     */
+    public Boolean kolisioa(int x, int y) {
+        GameObject[][] matrizea = gameMain.getMapa().getMatrix();
+        return matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.WALL.getSymbol();
     }
 
     @Override
