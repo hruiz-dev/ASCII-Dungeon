@@ -3,6 +3,7 @@ package data.interactive;
 import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
+import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import kalkuloak.GameMain;
 import render.GraficsConfig;
@@ -91,6 +92,11 @@ public class Jokalaria extends GameObject {
         }
         GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
 
+        ateaIreki(x, y);
+
+        giltzaArtu(x, y);
+
+        minaArtu(x, y);
         if (kolisioa(x, y)) {
             return matrizea;
         }
@@ -115,6 +121,41 @@ public class Jokalaria extends GameObject {
     public Boolean kolisioa(int x, int y) {
         GameObject[][] matrizea = gameMain.getMapa().getMatrix();
         return matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.WALL.getSymbol();
+    }
+
+    /**
+     * Metodo honek jokalariak giltza bat artu duen detektatzen du
+     * @param x x-ejean zenbat mugitu den
+     * @param y y-ejean zenbat mugitu den
+     */
+    public void giltzaArtu(int x, int y) {
+        GameObject objetua = gameMain.getInteractables().getMatrix()[getX()+ x][getY()+ y];
+        if (objetua != null) {
+            if (objetua.getForma().getSymbol() == Formak.KEY.getSymbol()) {
+                setGiltzak(getGiltzak() + 1);
+            }
+        }
+    }
+
+    public void minaArtu(int x, int y) {
+        GameObject objetua = gameMain.getInteractables().getMatrix()[getX() + x][getY() + y];
+        if (objetua != null) {
+            if (objetua instanceof Monstroa) {
+                setBizia(getBizia() - ((Monstroa) objetua).getAtakea());
+            }
+        }}
+
+    public void ateaIreki(int x, int y) {
+        GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
+        GameObject[][] mapa = gameMain.getMapa().getMatrix();
+        if (matrizea[getX() + x][getY() + y] != null) {
+            if (matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.DOOR.getSymbol()) {
+                if (getGiltzak() > 0) {
+                    setGiltzak(getGiltzak() - 1);
+                    mapa[getX() + x][getY() + y] = new Estatikoa(Formak.FLOOR);
+                }
+            }
+        }
     }
 
     @Override

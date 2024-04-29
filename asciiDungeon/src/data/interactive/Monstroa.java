@@ -8,15 +8,11 @@ import java.util.List;
 
 public class Monstroa extends GameObject {
 
-    private int bizia;
-    private int atakea;
-    private List<Vector2> mugimenduDirezioa;
+    private int bizia = 10;
+    private int atakea = 3;
 
-    public Monstroa(Formak forma, Vector2 posizioa, int bizia, int atakea, List<Vector2> mugimenduDirezioa) {
+    public Monstroa(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
-        this.bizia = bizia;
-        this.atakea = atakea;
-        this.mugimenduDirezioa = mugimenduDirezioa;
     }
 
     public int getBizia() {
@@ -33,14 +29,6 @@ public class Monstroa extends GameObject {
 
     public void setAtakea(int atakea) {
         this.atakea = atakea;
-    }
-
-    public List<Vector2> getMugimenduDirezioa() {
-        return mugimenduDirezioa;
-    }
-
-    public void setMugimenduDirezioa(List<Vector2> mugimenduDirezioa) {
-        this.mugimenduDirezioa = mugimenduDirezioa;
     }
 
     /**
