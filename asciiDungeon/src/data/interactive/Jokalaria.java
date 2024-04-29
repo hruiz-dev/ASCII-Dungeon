@@ -112,7 +112,7 @@ public class Jokalaria extends GameObject {
     }
 
     /**
-     * Funtzi honek hurrengo mapako kasila pareta den kombrobatzen du eta hau pareta bada true itzuiltzen du
+     * Funtzio honek hurrengo mapako kasila pareta den kombrobatzen du eta hau pareta bada true itzuiltzen du
      * @param x X ejean zenbat mugitu den
      * @param y Y ejean zenbat mugitu den
      * @return kasila pareta bada true itzultzen du
