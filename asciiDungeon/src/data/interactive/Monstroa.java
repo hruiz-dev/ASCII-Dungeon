@@ -3,6 +3,7 @@ package data.interactive;
 import data.GameObject;
 import data.Vector2;
 import data.noInteractive.Formak;
+import kalkuloak.GameMain;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class Monstroa extends GameObject {
      */
     @Override
     public GameObject[][] update() {
-        return null;
+        return GameMain.getGameMain().getInteractables().getMatrix();
         //TODO: Monstroa mugitzea edo ez segun mugimenduDirezioa konfigurazioa, monstrok mina egitea, montroak bizi edukitzea
     }
 }

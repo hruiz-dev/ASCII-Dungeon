@@ -4,6 +4,7 @@ import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
 import data.interactive.Jokalaria;
+import data.interactive.Monstroa;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import render.GraficsConfig;
@@ -25,7 +26,7 @@ public class MapLoader {
             int i = 0;
             while ((line = br.readLine()) != null) {
                 for (int j = 0; j < line.length(); j++) {
-                        map[j][i] = kargatuObjetua(line.charAt(j));
+                        map[j][i] = kargatuObjetua(line.charAt(j), new Vector2(j, i));
                         if (map[j][i] instanceof Jokalaria) {
                             Jokalaria.getJokalaria().setPosizioa(new Vector2(j, i));
                         }
@@ -53,7 +54,7 @@ public class MapLoader {
         return map;
     }
 
-    public static GameObject kargatuObjetua(char symbol) {
+    public static GameObject kargatuObjetua(char symbol, Vector2 posizioa) {
         if (symbol == Formak.WALL.getSymbol()) {
             return new Estatikoa(Formak.WALL);
         } else if (symbol == Formak.FLOOR.getSymbol()) {
@@ -61,7 +62,7 @@ public class MapLoader {
         } else if (symbol == Formak.PLAYER.getSymbol()) {
             return Jokalaria.getJokalaria();
         } else if (symbol == Formak.ENEMY.getSymbol()) {
-            return new Estatikoa(Formak.ENEMY);
+            return new Monstroa(Formak.ENEMY, posizioa);
         } else if (symbol == Formak.KEY.getSymbol()) {
             return new Estatikoa(Formak.KEY);
         } else if (symbol == Formak.DOOR.getSymbol()) {

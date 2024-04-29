@@ -96,8 +96,7 @@ public class Jokalaria extends GameObject {
 
         giltzaArtu(x, y);
 
-        minaArtu(x, y);
-        if (kolisioa(x, y)) {
+        if (kolisioa(x, y) || minaArtu(x, y)) {
             return matrizea;
         }
 
@@ -137,13 +136,22 @@ public class Jokalaria extends GameObject {
         }
     }
 
-    public void minaArtu(int x, int y) {
+    /**
+     * Funtzio honek jokalariak mina artu duen edo ez esaten digu eta mina artu badu bizia kentzen du.
+     * @param x x-ejean zenbat mugitu den
+     * @param y y-ejean zenbat mugitu den
+     * @return mina artu badu true itzultzen du
+     */
+    public Boolean minaArtu(int x, int y) {
         GameObject objetua = gameMain.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
             if (objetua instanceof Monstroa) {
                 setBizia(getBizia() - ((Monstroa) objetua).getAtakea());
+                return true;
             }
-        }}
+        }
+    return false;
+    }
 
     public void ateaIreki(int x, int y) {
         GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
