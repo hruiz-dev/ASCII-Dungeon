@@ -35,7 +35,9 @@ public class Bizia extends Ui{
         return bizia;
     }
 
-
+    /**
+     * Metodo honek joklariaren bizia artzen du eta hau bihotzen irudietara psatzen du layers klase batean
+     */
     @Override
     public void updateUi() {
         bizitza = Jokalaria.getJokalaria().getBizia();

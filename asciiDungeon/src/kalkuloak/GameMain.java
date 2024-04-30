@@ -87,6 +87,11 @@ public class GameMain {
                 mapa.render();
                 this.ui.render();
             }
+            // delay bat gehitu gure CPU-a ez gainkargatzeko
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
         }
     }
 
