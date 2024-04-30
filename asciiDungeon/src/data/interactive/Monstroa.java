@@ -97,7 +97,8 @@ public class Monstroa extends GameObject {
             GameMain.getGameMain().getInteractables().getMatrix()[getX()][getY()] = null;
             return GameMain.getGameMain().getInteractables().getMatrix();
         }
-       return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);
+//       return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);
+        return GameMain.getGameMain().getInteractables().getMatrix();
         //TODO: Monstroa mugitzea edo ez segun mugimenduDirezioa konfigurazioa, monstrok mina egitea, montroak bizi edukitzea
     }
 }

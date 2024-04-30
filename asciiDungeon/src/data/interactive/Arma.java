@@ -1,6 +1,7 @@
 package data.interactive;
 
 import data.exceptions.GameLogicException;
+import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import data.GameObject;
 import data.Item;
@@ -48,32 +49,66 @@ public class Arma extends Item {
 
         switch (jokalaria.getAzkenMugimendua()) {
             case 'w':
-                recorrerPosiciones(pos.getX(), pos.getY(), 0, 1);
+                atakeaEgin(pos.getX(), pos.getY(), 0, 1);
                 break;
             case 'a':
-                recorrerPosiciones(pos.getX(), pos.getY(), -1, 0);
+                atakeaEgin(pos.getX(), pos.getY(), -1, 0);
                 break;
             case 's':
-                recorrerPosiciones(pos.getX(), pos.getY(), 0, -1);
+                atakeaEgin(pos.getX(), pos.getY(), 0, -1);
                 break;
             case 'd':
-                recorrerPosiciones(pos.getX(), pos.getY(), 1, 0);
+                atakeaEgin(pos.getX(), pos.getY(), 1, 0);
                 break;
         }
     }
 
-    public void recorrerPosiciones( int posX, int posY, int dirX, int dirY) {
+    /**
+     * TODO : metodoak hondo funtzionatu beharra du
+     * @param posX
+     * @param posY
+     * @param dirX
+     * @param dirY
+     */
+    public void atakeaEgin( int posX, int posY, int dirX, int dirY) {
         GameObject[][] matriz = GameMain.getGameMain().getInteractables().getMatrix();
-        for (int i = -1; i <= 1; i++) {
+        int iStart;
+        int iEnd;
+        int jStart;
+        int jEnd;
 
-            if (dirX == 1 || dirX == -1) {
-                if (matriz[posX + dirX][posY + i] instanceof Monstroa) {
-                    Monstroa monstroa = (Monstroa) matriz[posX + dirX][posY + i];
-                    monstroa.setBizia(monstroa.getBizia() - atakea);
-                }
-            } else if (dirY == 1 || dirY == -1) {
-                if (matriz[posX + i][posY + dirY] instanceof Monstroa) {
-                    Monstroa monstroa = (Monstroa) matriz[posX + i][posY + dirY];
+        if (dirX == 1) {
+            iStart = posX + 1;
+            iEnd = posX + 2;
+            jStart = posY - 1;
+            jEnd = posY + 1;
+        } else if (dirX == -1) {
+            iStart = posX - 1;
+            iEnd = posX - 2;
+            jStart = posY - 1;
+            jEnd = posY + 1;
+        } else if (dirY == 1) {
+            iStart = posX - 1;
+            iEnd = posX + 1;
+            jStart = posY + 1;
+            jEnd = posY + 2;
+        } else {
+            iStart = posX - 1;
+            iEnd = posX + 1;
+            jStart = posY - 1;
+            jEnd = posY - 2;
+        }
+
+        // si el eje x=1 x = 1,2 ; se es x -1 x = -1,-2
+        // eje j -1,1
+        //si el eje j = 1 j = 1,2 ; se es j -1 j = -1,-2
+        // eje i -1,1
+
+        for (int i = iStart; i <= iEnd; i++) {
+            for (int j = jStart; j <= jEnd; j++) {
+                matriz[i][j] = new Estatikoa(Formak.DOOR);
+                if (matriz[posX + dirX + j][posY + i] instanceof Monstroa) {
+                    Monstroa monstroa = (Monstroa) matriz[posX + dirX + j][posY + i];
                     monstroa.setBizia(monstroa.getBizia() - atakea);
                 }
             }

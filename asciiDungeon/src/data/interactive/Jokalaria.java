@@ -24,7 +24,7 @@ public class Jokalaria extends GameObject {
     private Jokalaria(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
         try {
-            arma = new Arma(Formak.FLOOR, new Vector2(0, 0), "Arma", 0, 3);
+            arma = new Arma(Formak.FLOOR, new Vector2(0, 0), "Ezpata", 0, 3);
         } catch (GameLogicException e) {
             throw new RuntimeException(e);
         }
