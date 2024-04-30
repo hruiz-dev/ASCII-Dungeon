@@ -47,6 +47,10 @@ public abstract class GameObject {
         return forma;
     }
 
+    public Vector2 getPosizioa() {
+        return posizioa;
+    }
+
     /**
      * Metodo honek gure GameObjetaren funtzionalitatea ejekutatuko du.
      */

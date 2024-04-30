@@ -47,6 +47,12 @@ public class GameMain {
                 }
                 objetuak = toUpdate;
             }
+            // hemen gure aplikazioaren haria gelditzen dugu gure CPU-a ez gainkargatzeko
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         gameOver();
     }

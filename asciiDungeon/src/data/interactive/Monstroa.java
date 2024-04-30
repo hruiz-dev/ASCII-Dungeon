@@ -25,6 +25,7 @@ public class Monstroa extends GameObject {
 
     public void setBizia(int bizia) {
         this.bizia = bizia;
+        System.out.println("Monstroaren bizia: " + bizia);
     }
 
     public int getAtakea() {
@@ -91,7 +92,11 @@ public class Monstroa extends GameObject {
     @Override
     public GameObject[][] update() {
         Random rand = new Random();
-        return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);
+        if (bizia < 0) {
+            GameMain.getGameMain().getInteractables().getMatrix()[getX()][getY()] = null;
+            return GameMain.getGameMain().getInteractables().getMatrix();
+        }
+       return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);
         //TODO: Monstroa mugitzea edo ez segun mugimenduDirezioa konfigurazioa, monstrok mina egitea, montroak bizi edukitzea
     }
 }

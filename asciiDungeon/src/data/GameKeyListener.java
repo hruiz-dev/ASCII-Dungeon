@@ -35,6 +35,9 @@ public class GameKeyListener implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_D) {
             a.setAzkenZapaldutakoTekla('d');
         }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            a.getArma().atakatu();
+        }
 
     }
 

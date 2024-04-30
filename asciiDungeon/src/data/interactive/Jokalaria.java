@@ -17,10 +17,17 @@ public class Jokalaria extends GameObject {
     private int giltzak;
     private char azkenZapaldutakoTekla;
 
+    private char azkenMugimendua;
+
     private static GameMain gameMain = GameMain.getGameMain();
 
     private Jokalaria(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
+        try {
+            arma = new Arma(Formak.FLOOR, new Vector2(0, 0), "Arma", 0, 3);
+        } catch (GameLogicException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -77,6 +84,10 @@ public class Jokalaria extends GameObject {
 
     public void setAzkenZapaldutakoTekla(char azkenZapaldutakoTekla) {
         this.azkenZapaldutakoTekla = azkenZapaldutakoTekla;
+    }
+
+    public char getAzkenMugimendua() {
+        return azkenMugimendua;
     }
 
     /**
@@ -150,6 +161,7 @@ public class Jokalaria extends GameObject {
                 return true;
             }
         }
+        System.out.println("Bizia:" + getBizia());
     return false;
     }
 
@@ -172,12 +184,16 @@ public class Jokalaria extends GameObject {
 
         if (azkenZapaldutakoTekla == 'w') {
             matrizea = mugitu(0, -1);
+            azkenMugimendua = 'w';
         } else if (azkenZapaldutakoTekla == 'a') {
             matrizea = mugitu(-1, 0);
+            azkenMugimendua = 'a';
         } else if (azkenZapaldutakoTekla == 's') {
             matrizea = mugitu(0, 1);
+            azkenMugimendua = 's';
         } else if (azkenZapaldutakoTekla == 'd') {
             matrizea = mugitu(1, 0);
+            azkenMugimendua = 'd';
         }
         azkenZapaldutakoTekla = ' ';
         return matrizea;
