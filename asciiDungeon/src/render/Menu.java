@@ -2,6 +2,7 @@ package render;
 import kalkuloak.Hasiera;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Menu extends JFrame {
 
@@ -16,13 +17,16 @@ public class Menu extends JFrame {
     public Menu() {
         super();
         this.setSize(GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
-        panel.add(new JLabel("Menu"));
+        panel.setLayout(new BorderLayout());
+        panel.add(new JLabel("Menu"), BorderLayout.NORTH);
+
+        JPanel bottomPanel = new JPanel();
 
         this.exit = new JButton("Exit");
         this.exit.addActionListener(e -> {
             System.exit(0);
         });
-        panel.add(this.exit);
+        bottomPanel.add(this.exit);
 
         this.start = new JButton("Start");
         this.start.addActionListener(e -> {
@@ -31,7 +35,7 @@ public class Menu extends JFrame {
            new Thread(Hasiera::startGame).start();
         });
 
-        panel.add(this.start);
+        bottomPanel.add(this.start);
 
         this.createMap = new JButton("Create Map");
         this.createMap.addActionListener(e -> {
@@ -40,9 +44,18 @@ public class Menu extends JFrame {
             new Thread((Hasiera::startMapBuilder)).start();
         });
 
-        panel.add(this.createMap);
+        bottomPanel.add(this.createMap);
+        panel.add(bottomPanel, BorderLayout.CENTER);
         this.add(panel);
         this.setVisible(true);
+        this.repaint();
+    }
+
+    public void gameOverMezua(String mezua) {
+        JPanel panela = new JPanel();
+        panela.add(new JLabel(mezua));
+        this.panel.add(panela, BorderLayout.EAST);
+        this.revalidate();
         this.repaint();
     }
 }

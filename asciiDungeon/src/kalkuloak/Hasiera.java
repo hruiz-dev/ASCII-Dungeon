@@ -11,6 +11,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Hasiera {
+
+    public static JFrame gameFrame;
+
     public static void main(String[] args) {
         new Menu();
     }
@@ -24,14 +27,14 @@ public class Hasiera {
         layeredPane.add(gameMain.getMapa().getPanel(), JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(gameMain.getInteractables().getPanel(), JLayeredPane.PALETTE_LAYER);
 
-        JFrame frame = new JFrame();
-        frame.setLayout(new BorderLayout());
-        frame.add(layeredPane, BorderLayout.CENTER);
-        frame.add(gameMain.getUi().getPanel(), BorderLayout.EAST);
-        frame.addKeyListener(new GameKeyListener());
-        frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +32, GraficsConfig.GAME_Y_CANVAS_SIZE);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        gameFrame = new JFrame();
+        gameFrame.setLayout(new BorderLayout());
+        gameFrame.add(layeredPane, BorderLayout.CENTER);
+        gameFrame.add(gameMain.getUi().getPanel(), BorderLayout.EAST);
+        gameFrame.addKeyListener(new GameKeyListener());
+        gameFrame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +32, GraficsConfig.GAME_Y_CANVAS_SIZE);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setVisible(true);
         gameMain.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa1Atzekaldea.txt"));
         gameMain.getInteractables().updateMatrix(MapLoader.kargatuBackground("mapa1Interaktiboa.txt"));
         gameMain.init();

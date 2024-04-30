@@ -161,7 +161,6 @@ public class Jokalaria extends GameObject {
                 return true;
             }
         }
-        System.out.println("Bizia:" + getBizia());
     return false;
     }
 
@@ -194,6 +193,10 @@ public class Jokalaria extends GameObject {
         } else if (azkenZapaldutakoTekla == 'd') {
             matrizea = mugitu(1, 0);
             azkenMugimendua = 'd';
+        }
+
+        if (getBizia() <= 0) {
+            gameMain.gameOver();
         }
         azkenZapaldutakoTekla = ' ';
         return matrizea;

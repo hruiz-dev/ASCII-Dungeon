@@ -8,6 +8,7 @@ import data.exceptions.GameLogicException;
 import data.noInteractive.Formak;
 import render.GraficsConfig;
 import render.Layers;
+import render.Menu;
 import render.Ui;
 
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ public class GameMain {
     private Layers mapa = new Layers(0, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
     private Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
     private Layers ui = new Layers(0, GraficsConfig.UI_X_GRID_SIZE, GraficsConfig.UI_Y_GRID_SIZE, GraficsConfig.UI_X_CANVAS_SIZE, GraficsConfig.UI_Y_CANVAS_SIZE);
+
+    private List<Thread> threads = new ArrayList<>();
 
     private boolean jokoaMartxan = true;
 
@@ -49,12 +52,10 @@ public class GameMain {
             }
             // hemen gure aplikazioaren haria gelditzen dugu gure CPU-a ez gainkargatzeko
             try {
-                Thread.sleep(500);
+                Thread.sleep(350);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         }
-        gameOver();
     }
 
     public void playerLoop() {
@@ -111,17 +112,28 @@ public class GameMain {
     }
 
     public void gameOver() {
-
+        jokoaMartxan = false;
+        Hasiera.gameFrame.dispose();
+        threads.forEach(Thread::interrupt);
+        Menu panela = new Menu();
+        panela.gameOverMezua("Game Over");
     }
 
     /**
      * Metodo honek gura jokuaren loop-a hasiko du beste thread batean.
      */
     public void init() {
+        jokoaMartxan = true;
+        Jokalaria.getJokalaria().setBizia(10);
         // Hari ezberdinak erabiliz gure jukoaren logika eta renderizazio klakuloak separatzen ditugu
-        new Thread(this::gameLoop).start();
-        new Thread(this::render).start();
-        new Thread(this::playerLoop).start();
+        threads.add(new Thread(this::gameLoop));
+        threads.add(new Thread(this::render));
+        threads.add(new Thread(this::playerLoop));
+        threads.forEach(thread -> {
+            if (!thread.isAlive()) {
+                thread.start();
+            }
+        });
     }
 
     public List<GameObject> getObjetuak() {
