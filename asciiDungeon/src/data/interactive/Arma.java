@@ -72,10 +72,10 @@ public class Arma extends Item {
      */
     public void atakeaEgin( int posX, int posY, int dirX, int dirY) {
         GameObject[][] matriz = GameMain.getGameMain().getInteractables().getMatrix();
-        int iStart;
-        int iEnd;
-        int jStart;
-        int jEnd;
+        int iStart = 0;
+        int iEnd = 0;
+        int jStart = 0;
+        int jEnd = 0;
 
         if (dirX == 1) {
             iStart = posX + 1;
@@ -83,32 +83,30 @@ public class Arma extends Item {
             jStart = posY - 1;
             jEnd = posY + 1;
         } else if (dirX == -1) {
-            iStart = posX - 1;
-            iEnd = posX - 2;
+            iStart = posX - 2;
+            iEnd = posX - 1;
             jStart = posY - 1;
             jEnd = posY + 1;
-        } else if (dirY == 1) {
+        } else if (dirY == -1) {
             iStart = posX - 1;
             iEnd = posX + 1;
             jStart = posY + 1;
             jEnd = posY + 2;
-        } else {
+        } else if (dirY == 1){
             iStart = posX - 1;
             iEnd = posX + 1;
-            jStart = posY - 1;
-            jEnd = posY - 2;
+            jStart = posY - 2;
+            jEnd = posY - 1;
         }
 
         // si el eje x=1 x = 1,2 ; se es x -1 x = -1,-2
         // eje j -1,1
         //si el eje j = 1 j = 1,2 ; se es j -1 j = -1,-2
         // eje i -1,1
-
         for (int i = iStart; i <= iEnd; i++) {
             for (int j = jStart; j <= jEnd; j++) {
-                matriz[i][j] = new Estatikoa(Formak.DOOR);
-                if (matriz[posX + dirX + j][posY + i] instanceof Monstroa) {
-                    Monstroa monstroa = (Monstroa) matriz[posX + dirX + j][posY + i];
+                if (matriz[i][j] instanceof Monstroa) {
+                    Monstroa monstroa = (Monstroa) matriz[i][j];
                     monstroa.setBizia(monstroa.getBizia() - atakea);
                 }
             }

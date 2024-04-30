@@ -43,18 +43,6 @@ public class MapLoader {
         } catch (GameLogicException e) {
             throw new RuntimeException(e);
         }
-        // testak egiteko
-        for (int i = 0; i < map[0].length -1; i++) {
-            for (int j = 0; j < map.length -1; j++) {
-                if (map[j][i] != null) {
-                    System.out.print(map[j][i].getForma().getSymbol());
-                } else {
-                    System.out.print(" ");
-                }
-            }
-            System.out.println();
-
-        }
 
         return map;
     }
