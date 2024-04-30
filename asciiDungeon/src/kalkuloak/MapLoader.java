@@ -16,6 +16,11 @@ import java.io.IOException;
 
 public class MapLoader {
 
+    /**
+     * Funtzio honek gure mapa kargatzen du fitxategi batetik
+     * @param fileName Fitxategiaren izena
+     * @return Mapa matrizean gordeta
+     */
     public static GameObject[][] kargatuBackground(String fileName) {
         String path = "assets/mapak/" + fileName;
         GameObject[][] map = new GameObject[GraficsConfig.GAME_X_GRID_SIZE][GraficsConfig.GAME_Y_GRID_SIZE];
@@ -54,6 +59,12 @@ public class MapLoader {
         return map;
     }
 
+    /**
+     * Funtzio honek karakterea eta poszioa hemanda game object bat kargatzen du.
+     * @param symbol Karakterea
+     * @param posizioa Posizioa
+     * @return GameObject bat
+     */
     public static GameObject kargatuObjetua(char symbol, Vector2 posizioa) {
         if (symbol == Formak.WALL.getSymbol()) {
             return new Estatikoa(Formak.WALL);

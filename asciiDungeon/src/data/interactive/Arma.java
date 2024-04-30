@@ -64,30 +64,19 @@ public class Arma extends Item {
 
     public void recorrerPosiciones( int posX, int posY, int dirX, int dirY) {
         GameObject[][] matriz = GameMain.getGameMain().getInteractables().getMatrix();
-        ArrayList<Vector2> posiciones = new ArrayList<>();
         for (int i = -1; i <= 1; i++) {
-            try {
-                if (dirX == 1 || dirX == -1) {
-                    posiciones.add(new Vector2(posX + dirX, posY + i));
-                    if (matriz[posX + dirX][posY + i] instanceof Monstroa) {
-                        Monstroa monstroa = (Monstroa) matriz[posX + dirX][posY + i];
-                        monstroa.setBizia(monstroa.getBizia() - atakea);
-                        System.out.println("Monstroaren bizia: " + monstroa.getBizia());
-                    }
-                } else if (dirY == 1 || dirY == -1) {
-                    posiciones.add(new Vector2(posX + i, posY + dirY));
-                    if (matriz[posX + i][posY + dirY] instanceof Monstroa) {
-                        Monstroa monstroa = (Monstroa) matriz[posX + i][posY + dirY];
-                        monstroa.setBizia(monstroa.getBizia() - atakea);
-                        System.out.println("Monstroaren bizia: " + monstroa.getBizia());
-                    }
+
+            if (dirX == 1 || dirX == -1) {
+                if (matriz[posX + dirX][posY + i] instanceof Monstroa) {
+                    Monstroa monstroa = (Monstroa) matriz[posX + dirX][posY + i];
+                    monstroa.setBizia(monstroa.getBizia() - atakea);
                 }
-            } catch (GameLogicException e) {
-                throw new RuntimeException(e);
+            } else if (dirY == 1 || dirY == -1) {
+                if (matriz[posX + i][posY + dirY] instanceof Monstroa) {
+                    Monstroa monstroa = (Monstroa) matriz[posX + i][posY + dirY];
+                    monstroa.setBizia(monstroa.getBizia() - atakea);
+                }
             }
-        }
-        for (Vector2 pos : posiciones) {
-            System.out.println("posizioa: " + pos.getX() + " " + pos.getY());
         }
     }
 }

@@ -4,6 +4,7 @@ import data.noInteractive.Formak;
 import data.GameObject;
 import data.Item;
 import data.Vector2;
+import kalkuloak.GameMain;
 
 /**
  * Objetua honetan gure partdan zear eduki al ditugun altxorrak dira, hauek guk nahi dugu Item mota gorde alko dute.
@@ -15,6 +16,7 @@ public class Altxorra extends GameObject {
     public Altxorra(Formak forma, Vector2 posizioa, Item objetua) {
         super(forma, posizioa);
         this.objetua = objetua;
+        GameMain.getGameMain().getObjetuak().add(this);
     }
 
     public Item getObjetua() {

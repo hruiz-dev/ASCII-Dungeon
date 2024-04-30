@@ -49,12 +49,18 @@ public class GameMain {
             }
             // hemen gure aplikazioaren haria gelditzen dugu gure CPU-a ez gainkargatzeko
             try {
-                Thread.sleep(150);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
         gameOver();
+    }
+
+    public void playerLoop() {
+        while (jokoaMartxan) {
+            interactables.updateMatrix(Jokalaria.getJokalaria().update());
+        }
     }
 
     private GameMain(){
@@ -115,6 +121,7 @@ public class GameMain {
         // Hari ezberdinak erabiliz gure jukoaren logika eta renderizazio klakuloak separatzen ditugu
         new Thread(this::gameLoop).start();
         new Thread(this::render).start();
+        new Thread(this::playerLoop).start();
     }
 
     public List<GameObject> getObjetuak() {

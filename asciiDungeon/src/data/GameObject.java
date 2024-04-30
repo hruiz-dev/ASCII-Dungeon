@@ -8,14 +8,12 @@ import kalkuloak.GameMain;
  * Klase hau gure jokoko objetu guztien aita da.
  */
 public abstract class GameObject {
-    private static GameMain gameMain = GameMain.getGameMain();
     private Vector2 posizioa;
     private Formak forma;
 
     public GameObject(Formak forma, Vector2 posizioa) {
         this.forma = forma;
         this.posizioa = posizioa;
-        gameMain.getObjetuak().add(this);
     }
 
     /**

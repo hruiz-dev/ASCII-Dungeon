@@ -17,6 +17,7 @@ public class Monstroa extends GameObject {
 
     public Monstroa(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
+        GameMain.getGameMain().getObjetuak().add(this);
     }
 
     public int getBizia() {
