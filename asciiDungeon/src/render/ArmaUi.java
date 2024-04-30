@@ -1,5 +1,6 @@
 package render;
 
+import data.GameObject;
 import data.interactive.Arma;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
@@ -12,8 +13,8 @@ public class ArmaUi extends Ui{
 
     private Arma[] armak = new Arma[2];
 
-    public ArmaUi(Vector2 posizioa, Formak[][] datuak) {
-        super(posizioa, datuak);
+    public ArmaUi(GameObject[][] datuak) {
+        super( datuak);
     }
 
 
@@ -22,9 +23,4 @@ public class ArmaUi extends Ui{
         //TODO armakaren balorea eguneratu eta pantailan erakutsi
     }
 
-    @Override
-    public Estatikoa[][] toGameObject() {
-        //TODO arma pantailan erakusteko Estatikoa[][] itzultzen du
-        return new Estatikoa[0][];
-    }
 }

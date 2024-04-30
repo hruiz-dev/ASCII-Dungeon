@@ -1,5 +1,6 @@
 package render;
 
+import data.GameObject;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import data.Vector2;
@@ -11,8 +12,8 @@ public class Giltzak extends Ui{
 
     private int giltzak;
 
-    public Giltzak(Vector2 posizioa, Formak[][] datuak) {
-        super(posizioa, datuak);
+    public Giltzak(GameObject[][] datuak) {
+        super(datuak);
     }
 
     @Override
@@ -20,9 +21,4 @@ public class Giltzak extends Ui{
         //TODO giltzaren balorea eguneratu eta pantailan erakutsi
     }
 
-    @Override
-    public Estatikoa[][] toGameObject() {
-        //TODO giltza pantailan erakusteko Estatikoa[][] itzultzen du
-        return new Estatikoa[0][];
-    }
 }

@@ -44,6 +44,8 @@ public class Menu extends JFrame {
             new Thread((Hasiera::startMapBuilder)).start();
         });
 
+        panel.add(new JLabel("Art Contributor: Luken Franco"), BorderLayout.SOUTH);
+
         bottomPanel.add(this.createMap);
         panel.add(bottomPanel, BorderLayout.CENTER);
         this.add(panel);

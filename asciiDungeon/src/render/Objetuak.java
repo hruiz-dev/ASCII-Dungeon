@@ -1,5 +1,6 @@
 package render;
 
+import data.GameObject;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import data.Item;
@@ -14,8 +15,8 @@ public class Objetuak extends Ui{
 
     private List<Item> objetuak;
 
-    public Objetuak(Vector2 posizioa, Formak[][] datuak) {
-        super(posizioa, datuak);
+    public Objetuak( GameObject[][] datuak) {
+        super(datuak);
     }
 
     @Override
@@ -23,9 +24,4 @@ public class Objetuak extends Ui{
         //TODO: objetuak pantailan erakutsi eta objetu katitatea eguneratu
     }
 
-    @Override
-    public Estatikoa[][] toGameObject() {
-        //TODO: objetuak pantailan erakusteko Estatikoa[][] itzultzen du
-        return new Estatikoa[0][];
-    }
 }

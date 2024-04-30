@@ -2,6 +2,7 @@ package kalkuloak;
 
 import data.GameKeyListener;
 import data.MapCreatorKeyListener;
+import render.Bizia;
 import render.GraficsConfig;
 import render.Menu;
 
@@ -30,7 +31,7 @@ public class Hasiera {
         gameFrame = new JFrame();
         gameFrame.setLayout(new BorderLayout());
         gameFrame.add(layeredPane, BorderLayout.CENTER);
-        gameFrame.add(gameMain.getUi().getPanel(), BorderLayout.EAST);
+        gameFrame.add(Bizia.getBizia().getBiziaLayer().getPanel(), BorderLayout.EAST);
         gameFrame.addKeyListener(new GameKeyListener());
         gameFrame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +32, GraficsConfig.GAME_Y_CANVAS_SIZE);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,5 +1,6 @@
 package render;
 
+import data.GameObject;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import data.Vector2;
@@ -8,27 +9,25 @@ import data.Vector2;
  * Klase hau gure interfazeako komponeteak sortzeko aita klasea da.
  */
 public abstract class Ui {
-    private Vector2 posizioa;
-    private Formak[][] datuak;
+    private GameObject[][] datuak;
 
-    public Ui(Vector2 posizioa, Formak[][] datuak) {
-        this.posizioa = posizioa;
+    public Ui( GameObject[][] datuak) {
         this.datuak = datuak;
     }
 
-    public Vector2 getPosizioa() {
-        return posizioa;
-    }
-
-    public void setPosizioa(Vector2 posizioa) {
-        this.posizioa = posizioa;
-    }
-
-    public Formak[][] getForma() {
+    public GameObject[][] getForma() {
         return datuak;
     }
 
-    public void setForma(Formak[][] datuak) {
+    public GameObject[][] getDatuak() {
+        return datuak;
+    }
+
+    public void setDatuak(GameObject[][] datuak) {
+        this.datuak = datuak;
+    }
+
+    public void setForma(GameObject[][] datuak) {
         this.datuak = datuak;
     }
 
@@ -41,5 +40,4 @@ public abstract class Ui {
      * Funtzi honek gure Ui objetua gameobjet Objtu Estakoikoa kalsera pasatuko du gero renderizazio matrizean sartzeko
      * @return Ui diseinua GameObject matrizea bezela
      */
-    public abstract Estatikoa[][] toGameObject();
 }

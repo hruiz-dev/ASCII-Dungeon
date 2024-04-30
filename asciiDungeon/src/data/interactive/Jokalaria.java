@@ -11,7 +11,7 @@ import render.GraficsConfig;
 public class Jokalaria extends GameObject {
 
     private static Jokalaria jokalaria;
-    private int bizia = 10;
+    private int bizia = 20;
     private Arma arma;
     private Armadura armadura;
     private int giltzak;

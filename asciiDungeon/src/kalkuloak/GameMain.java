@@ -81,9 +81,7 @@ public class GameMain {
     public void render() {
         while (jokoaMartxan) {
             if (uiKomponenteak != null) {
-                Iterator<Ui> iterator = uiKomponenteak.iterator();
-                while (iterator.hasNext()) {
-                    Ui ui = iterator.next();
+                for (Ui ui : uiKomponenteak) {
                     ui.updateUi();
                 }
                 mapa.render();
@@ -124,7 +122,8 @@ public class GameMain {
      */
     public void init() {
         jokoaMartxan = true;
-        Jokalaria.getJokalaria().setBizia(10);
+        Jokalaria.getJokalaria().setBizia(20);
+        threads.clear();
         // Hari ezberdinak erabiliz gure jukoaren logika eta renderizazio klakuloak separatzen ditugu
         threads.add(new Thread(this::gameLoop));
         threads.add(new Thread(this::render));
