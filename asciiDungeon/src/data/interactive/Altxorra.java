@@ -1,5 +1,6 @@
 package data.interactive;
 
+import data.GameMainData;
 import data.noInteractive.Formak;
 import data.GameObject;
 import data.Item;
@@ -16,7 +17,7 @@ public class Altxorra extends GameObject {
     public Altxorra(Formak forma, Vector2 posizioa, Item objetua) {
         super(forma, posizioa);
         this.objetua = objetua;
-        GameMain.getGameMain().getObjetuak().add(this);
+        GameMainData.getObjetuak().add(this);
     }
 
     public Item getObjetua() {

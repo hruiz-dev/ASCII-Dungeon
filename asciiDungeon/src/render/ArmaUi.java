@@ -2,6 +2,7 @@ package render;
 
 import data.GameObject;
 import data.interactive.Arma;
+import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import data.Vector2;
@@ -11,7 +12,7 @@ import data.Vector2;
  */
 public class ArmaUi extends Ui{
 
-    private Arma[] armak = new Arma[2];
+    private Layers armaLayer = new Layers(1, 1, 1, 16, 16);
 
     public ArmaUi(GameObject[][] datuak) {
         super( datuak);
@@ -20,7 +21,11 @@ public class ArmaUi extends Ui{
 
     @Override
     public void updateUi() {
-        //TODO armakaren balorea eguneratu eta pantailan erakutsi
+        Arma arma = Jokalaria.getJokalaria().getArma();
+        GameObject[][] armak = new GameObject[1][1];
+        armak[0][0] = arma;
+        armaLayer.updateMatrix(armak);
+
     }
 
 }

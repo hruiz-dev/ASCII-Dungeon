@@ -1,5 +1,6 @@
 package data.interactive;
 
+import data.GameMainData;
 import data.GameObject;
 import data.Vector2;
 import data.noInteractive.Formak;
@@ -17,6 +18,6 @@ public class Giltza extends GameObject {
      */
     @Override
     public GameObject[][] update() {
-        return GameMain.getGameMain().getInteractables().getMatrix();
+        return GameMainData.getInteractables().getMatrix();
     }
 }

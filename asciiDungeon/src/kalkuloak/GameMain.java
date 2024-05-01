@@ -1,6 +1,7 @@
 package kalkuloak;
 
 import data.GameKeyListener;
+import data.GameMainData;
 import data.Vector2;
 import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
@@ -23,14 +24,14 @@ public class GameMain {
 
     private static GameMain gameMain;
 
-    private List<GameObject> objetuak = new ArrayList<>();
-    private List<Ui> uiKomponenteak = new ArrayList<>();
+    private static List<GameObject> objetuak = GameMainData.getObjetuak();
+    private static List<Ui> uiKomponenteak = GameMainData.getUiKomponenteak();
 
-    private Layers mapa = new Layers(0, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
-    private Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
-    private UiPanel ui = new UiPanel();
+    private static Layers mapa = GameMainData.getMapa();
+    private static Layers interactables = GameMainData.getInteractables();
+    private static UiPanel ui = GameMainData.getUi();
 
-    private List<Thread> threads = new ArrayList<>();
+    private static List<Thread> threads = GameMainData.getThreads();
 
     private boolean jokoaMartxan = true;
 
@@ -145,31 +146,4 @@ public class GameMain {
         });
     }
 
-    public List<GameObject> getObjetuak() {
-        return objetuak;
-    }
-
-    public void setObjetuak(List<GameObject> objetuak) {
-        this.objetuak = objetuak;
-    }
-
-    public List<Ui> getUiKomponenteak() {
-        return uiKomponenteak;
-    }
-
-    public void setUiKomponenteak(List<Ui> uiKomponenteak) {
-        this.uiKomponenteak = uiKomponenteak;
-    }
-
-    public Layers getMapa() {
-        return mapa;
-    }
-
-    public Layers getInteractables() {
-        return interactables;
-    }
-
-    public UiPanel getUi() {
-        return ui;
-    }
 }

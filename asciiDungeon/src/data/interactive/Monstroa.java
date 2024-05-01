@@ -1,5 +1,6 @@
 package data.interactive;
 
+import data.GameMainData;
 import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
@@ -17,7 +18,7 @@ public class Monstroa extends GameObject {
 
     public Monstroa(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
-        GameMain.getGameMain().getObjetuak().add(this);
+        GameMainData.getObjetuak().add(this);
     }
 
     public int getBizia() {
@@ -39,9 +40,9 @@ public class Monstroa extends GameObject {
 
     public GameObject[][] mugitu(int x, int y) {
         if (x > GraficsConfig.GAME_X_GRID_SIZE || y > GraficsConfig.GAME_Y_GRID_SIZE) {
-            return GameMain.getGameMain().getInteractables().getMatrix();
+            return GameMainData.getInteractables().getMatrix();
         }
-        GameObject[][] matrizea = GameMain.getGameMain().getInteractables().getMatrix();
+        GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
 
         if (kolisioa(x, y) || jokalariaJo(x, y)) {
             return matrizea;
@@ -64,7 +65,7 @@ public class Monstroa extends GameObject {
      * @return kasila pareta bada true itzultzen du
      */
     public Boolean kolisioa(int x, int y) {
-        GameObject[][] matrizea = GameMain.getGameMain().getMapa().getMatrix();
+        GameObject[][] matrizea = GameMainData.getMapa().getMatrix();
         return matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.WALL.getSymbol();
     }
 
@@ -75,7 +76,7 @@ public class Monstroa extends GameObject {
      * @return mina artu badu true itzultzen du
      */
     public Boolean jokalariaJo(int x, int y) {
-        GameObject objetua = GameMain.getGameMain().getInteractables().getMatrix()[getX() + x][getY() + y];
+        GameObject objetua = GameMainData.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
             if (objetua instanceof Jokalaria) {
                 ((Jokalaria) objetua).setBizia(((Jokalaria) objetua).getBizia() - this.atakea);
@@ -94,8 +95,8 @@ public class Monstroa extends GameObject {
     public GameObject[][] update() {
         Random rand = new Random();
         if (bizia < 0) {
-            GameMain.getGameMain().getInteractables().getMatrix()[getX()][getY()] = null;
-            return GameMain.getGameMain().getInteractables().getMatrix();
+            GameMainData.getInteractables().getMatrix()[getX()][getY()] = null;
+            return GameMainData.getInteractables().getMatrix();
         }
        return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);
     }

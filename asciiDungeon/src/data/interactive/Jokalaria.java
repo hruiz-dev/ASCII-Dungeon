@@ -1,5 +1,6 @@
 package data.interactive;
 
+import data.GameMainData;
 import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
@@ -18,9 +19,6 @@ public class Jokalaria extends GameObject {
     private char azkenZapaldutakoTekla;
 
     private char azkenMugimendua;
-
-    private static GameMain gameMain = GameMain.getGameMain();
-
     private Jokalaria(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
         try {
@@ -99,9 +97,9 @@ public class Jokalaria extends GameObject {
      */
     public GameObject[][] mugitu(int x, int y) {
         if (x > GraficsConfig.GAME_X_GRID_SIZE || y > GraficsConfig.GAME_Y_GRID_SIZE) {
-            return gameMain.getInteractables().getMatrix();
+            return GameMainData.getInteractables().getMatrix();
         }
-        GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
+        GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
 
         ateaIreki(x, y);
 
@@ -129,7 +127,7 @@ public class Jokalaria extends GameObject {
      * @return kasila pareta bada true itzultzen du
      */
     public Boolean kolisioa(int x, int y) {
-        GameObject[][] matrizea = gameMain.getMapa().getMatrix();
+        GameObject[][] matrizea = GameMainData.getMapa().getMatrix();
         return matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.WALL.getSymbol();
     }
 
@@ -139,7 +137,7 @@ public class Jokalaria extends GameObject {
      * @param y y-ejean zenbat mugitu den
      */
     public void giltzaArtu(int x, int y) {
-        GameObject objetua = gameMain.getInteractables().getMatrix()[getX()+ x][getY()+ y];
+        GameObject objetua = GameMainData.getInteractables().getMatrix()[getX()+ x][getY()+ y];
         if (objetua != null) {
             if (objetua.getForma().getSymbol() == Formak.KEY.getSymbol()) {
                 setGiltzak(getGiltzak() + 1);
@@ -154,7 +152,7 @@ public class Jokalaria extends GameObject {
      * @return mina artu badu true itzultzen du
      */
     public Boolean minaArtu(int x, int y) {
-        GameObject objetua = gameMain.getInteractables().getMatrix()[getX() + x][getY() + y];
+        GameObject objetua = GameMainData.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
             if (objetua instanceof Monstroa) {
                 setBizia(getBizia() - ((Monstroa) objetua).getAtakea());
@@ -165,8 +163,8 @@ public class Jokalaria extends GameObject {
     }
 
     public void ateaIreki(int x, int y) {
-        GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
-        GameObject[][] mapa = gameMain.getMapa().getMatrix();
+        GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
+        GameObject[][] mapa = GameMainData.getMapa().getMatrix();
         if (matrizea[getX() + x][getY() + y] != null) {
             if (matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.DOOR.getSymbol()) {
                 if (getGiltzak() > 0) {
@@ -179,7 +177,7 @@ public class Jokalaria extends GameObject {
 
     @Override
     public GameObject[][] update() {
-        GameObject[][] matrizea = gameMain.getInteractables().getMatrix();
+        GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
 
         if (azkenZapaldutakoTekla == 'w') {
             matrizea = mugitu(0, -1);
@@ -196,7 +194,7 @@ public class Jokalaria extends GameObject {
         }
 
         if (getBizia() <= 0) {
-            gameMain.gameOver();
+            GameMain.getGameMain().gameOver();
         }
         azkenZapaldutakoTekla = ' ';
         return matrizea;

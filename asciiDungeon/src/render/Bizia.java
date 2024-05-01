@@ -1,5 +1,6 @@
 package render;
 
+import data.GameMainData;
 import data.GameObject;
 import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
@@ -13,7 +14,6 @@ import kalkuloak.GameMain;
 public class Bizia extends Ui{
 
     private static Bizia bizia;
-    private int bizitza;
     private Layers biziaLayer = new Layers(1, 10, 1, 160, 16);
 
     public Bizia( GameObject[][] datuak) {
@@ -21,7 +21,7 @@ public class Bizia extends Ui{
         if (datuak == null) {
             this.setDatuak(new GameObject[10][1]);
         }
-        GameMain.getGameMain().getUiKomponenteak().add(this);
+        GameMainData.getUiKomponenteak().add(this);
     }
 
     public Layers getBiziaLayer() {
@@ -40,8 +40,7 @@ public class Bizia extends Ui{
      */
     @Override
     public void updateUi() {
-        bizitza = Jokalaria.getJokalaria().getBizia();
-        float x = (float) bizitza /4;
+        float x = (float) Jokalaria.getJokalaria().getBizia() /4;
         int i = 0;
         for (int j = 0; j < 10; j++) {
             this.getDatuak()[j][0] = null;

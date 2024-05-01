@@ -1,5 +1,6 @@
 package data.interactive;
 
+import data.GameMainData;
 import data.exceptions.GameLogicException;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
@@ -38,11 +39,11 @@ public class Arma extends Item {
      */
     @Override
     public GameObject[][] update() {
-        return GameMain.getGameMain().getInteractables().getMatrix();
+        return GameMainData.getInteractables().getMatrix();
     }
 
     public void atakatu() {
-        GameObject[][] matrizea = GameMain.getGameMain().getInteractables().getMatrix();
+        GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
         Jokalaria jokalaria = Jokalaria.getJokalaria();
 
         Vector2 pos = jokalaria.getPosizioa();
@@ -71,7 +72,7 @@ public class Arma extends Item {
      * @param dirY
      */
     public void atakeaEgin( int posX, int posY, int dirX, int dirY) {
-        GameObject[][] matriz = GameMain.getGameMain().getInteractables().getMatrix();
+        GameObject[][] matriz = GameMainData.getInteractables().getMatrix();
         int iStart = 0;
         int iEnd = 0;
         int jStart = 0;
