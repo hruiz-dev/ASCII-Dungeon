@@ -1,16 +1,17 @@
 package kalkuloak;
 
+import data.GameKeyListener;
 import data.Vector2;
 import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.GameObject;
 import data.exceptions.GameLogicException;
 import data.noInteractive.Formak;
-import render.GraficsConfig;
-import render.Layers;
+import render.*;
 import render.Menu;
-import render.Ui;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +28,7 @@ public class GameMain {
 
     private Layers mapa = new Layers(0, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
     private Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
-    private Layers ui = new Layers(0, GraficsConfig.UI_X_GRID_SIZE, GraficsConfig.UI_Y_GRID_SIZE, GraficsConfig.UI_X_CANVAS_SIZE, GraficsConfig.UI_Y_CANVAS_SIZE);
+    private UiPanel ui = new UiPanel();
 
     private List<Thread> threads = new ArrayList<>();
 
@@ -85,7 +86,6 @@ public class GameMain {
                     ui.updateUi();
                 }
                 mapa.render();
-                this.ui.render();
             }
             // delay bat gehitu gure CPU-a ez gainkargatzeko
             try {
@@ -116,7 +116,7 @@ public class GameMain {
 
     public void gameOver() {
         jokoaMartxan = false;
-        Hasiera.gameFrame.dispose();
+        GameUi.getFrame().dispose();
         threads.forEach(Thread::interrupt);
         Menu panela = new Menu();
         panela.gameOverMezua("Game Over");
@@ -128,11 +128,16 @@ public class GameMain {
     public void init() {
         jokoaMartxan = true;
         Jokalaria.getJokalaria().setBizia(20);
+
+        new GameUi();
+
         threads.clear();
+
         // Hari ezberdinak erabiliz gure jukoaren logika eta renderizazio klakuloak separatzen ditugu
         threads.add(new Thread(this::gameLoop));
         threads.add(new Thread(this::render));
         threads.add(new Thread(this::playerLoop));
+
         threads.forEach(thread -> {
             if (!thread.isAlive()) {
                 thread.start();
@@ -160,11 +165,11 @@ public class GameMain {
         return mapa;
     }
 
-    public Layers getUi() {
-        return ui;
-    }
-
     public Layers getInteractables() {
         return interactables;
+    }
+
+    public UiPanel getUi() {
+        return ui;
     }
 }

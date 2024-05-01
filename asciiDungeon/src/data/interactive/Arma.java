@@ -64,7 +64,7 @@ public class Arma extends Item {
     }
 
     /**
-     * TODO : metodoak hondo funtzionatu beharra du
+     * TODO : metodoak ondo funtzionatu beharra du
      * @param posX
      * @param posY
      * @param dirX

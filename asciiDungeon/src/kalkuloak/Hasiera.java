@@ -13,8 +13,6 @@ import java.awt.event.WindowEvent;
 
 public class Hasiera {
 
-    public static JFrame gameFrame;
-
     public static void main(String[] args) {
         new Menu();
     }
@@ -23,22 +21,7 @@ public class Hasiera {
      * Metodo honek gure jokoaren hasieratzea burutzen du.
      */
     public static void startGame(){
-        GameMain gameMain = GameMain.getGameMain();
-        JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.add(gameMain.getMapa().getPanel(), JLayeredPane.DEFAULT_LAYER);
-        layeredPane.add(gameMain.getInteractables().getPanel(), JLayeredPane.PALETTE_LAYER);
-
-        gameFrame = new JFrame();
-        gameFrame.setLayout(new BorderLayout());
-        gameFrame.add(layeredPane, BorderLayout.CENTER);
-        gameFrame.add(Bizia.getBizia().getBiziaLayer().getPanel(), BorderLayout.EAST);
-        gameFrame.addKeyListener(new GameKeyListener());
-        gameFrame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +32, GraficsConfig.GAME_Y_CANVAS_SIZE);
-        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameFrame.setVisible(true);
-        gameMain.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa1Atzekaldea.txt"));
-        gameMain.getInteractables().updateMatrix(MapLoader.kargatuBackground("mapa1Interaktiboa.txt"));
-        gameMain.init();
+        GameMain.getGameMain().init();
     }
 
     public static void startMapBuilder(){
