@@ -13,7 +13,7 @@ public class UiPanel extends JPanel {
 
         this.add(Bizia.getBizia().getBiziaLayer().getPanel(), createConstrains(0, 0, 1, 1));
 
-        this.add(customLabel("Armadura"), createConstrains(0, 1, 1, 1));
+        this.add(ArmaduraUi.getArmaduraUi().getArmaduraLayer().getPanel(), createConstrains(1, 0, 1, 1));
         this.add(customLabel("Placeholder"), createConstrains(0, 2, 1, 1));
 
         this.add(customLabel("Placeholder"), createConstrains(0, 3, 1, 1));

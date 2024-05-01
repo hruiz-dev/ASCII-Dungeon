@@ -1,5 +1,6 @@
 package render;
 
+import data.GameMainData;
 import data.GameObject;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
@@ -13,6 +14,7 @@ public abstract class Ui {
 
     public Ui( GameObject[][] datuak) {
         this.datuak = datuak;
+        GameMainData.getUiKomponenteak().add(this);
     }
 
     public GameObject[][] getForma() {

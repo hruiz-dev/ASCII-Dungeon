@@ -14,7 +14,7 @@ public class Jokalaria extends GameObject {
     private static Jokalaria jokalaria;
     private int bizia = 20;
     private Arma arma;
-    private Armadura armadura;
+    private Armadura armadura = new Armadura(Formak.SHIELD3 , "Armadura", 0, 2);
     private int giltzak;
     private char azkenZapaldutakoTekla;
 
@@ -198,7 +198,6 @@ public class Jokalaria extends GameObject {
         }
         azkenZapaldutakoTekla = ' ';
         return matrizea;
-        //TODO: Jokalariaren mogimendua eta kolisioak kudeatu
     }
 
 }

@@ -42,14 +42,18 @@ public class GameMain {
 
         while (jokoaMartxan) {
             if (objetuak != null) {
+
+                GameObject[][] a = interactables.getMatrix();
                 List<GameObject> toUpdate = new ArrayList<>(objetuak);
                 for (GameObject go : toUpdate) {
                     if (!go.getClass().equals(Estatikoa.class)) {
-                        interactables.updateMatrix(go.update());
+                        a = go.update();
 
                     }
                 }
                 objetuak = toUpdate;
+                interactables.updateMatrix(a);
+
             }
             // hemen gure aplikazioaren haria gelditzen dugu gure CPU-a ez gainkargatzeko
             try {
@@ -82,6 +86,7 @@ public class GameMain {
     public void render() {
         while (jokoaMartxan) {
             if (uiKomponenteak != null) {
+
                 for (Ui ui : uiKomponenteak) {
                     ui.updateUi();
                 }

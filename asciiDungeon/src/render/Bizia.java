@@ -21,7 +21,7 @@ public class Bizia extends Ui{
         if (datuak == null) {
             this.setDatuak(new GameObject[5][1]);
         }
-        GameMainData.getUiKomponenteak().add(this);
+
     }
 
     public Layers getBiziaLayer() {
