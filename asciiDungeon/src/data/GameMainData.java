@@ -1,9 +1,6 @@
 package data;
 
-import render.GraficsConfig;
-import render.Layers;
-import render.Ui;
-import render.UiPanel;
+import render.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,7 +13,9 @@ public class GameMainData {
 
     private static Layers mapa = new Layers(0, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
     private static Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
+
     private static JPanel ui = new UiPanel();
+    private static JPanel konsola = new KonsolaPanel();
 
     private static List<Thread> threads = new ArrayList<>();
 
@@ -66,5 +65,13 @@ public class GameMainData {
 
     public static void setThreads(List<Thread> threads) {
         GameMainData.threads = threads;
+    }
+
+    public static JPanel getKonsola() {
+        return konsola;
+    }
+
+    public static void setKonsola(JPanel konsola) {
+        GameMainData.konsola = konsola;
     }
 }

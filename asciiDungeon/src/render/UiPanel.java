@@ -10,17 +10,24 @@ public class UiPanel extends JPanel {
         this.setSize(GraficsConfig.UI_X_CANVAS_SIZE, GraficsConfig.UI_Y_CANVAS_SIZE);
         this.setBackground(Color.BLACK);
         this.setLayout(new GridBagLayout());
-        this.setAlignmentY(TOP_ALIGNMENT);
-        this.add(customLabel("Bizia:"), createConstrains(0, 0, 1, 1));
-        this.add(Bizia.getBizia().getBiziaLayer().getPanel(), createConstrains(1, 0, 1, 1));
-        this.add(customLabel("Armadura"));
+
+        this.add(Bizia.getBizia().getBiziaLayer().getPanel(), createConstrains(0, 0, 1, 1));
+
+        this.add(customLabel("Armadura"), createConstrains(0, 1, 1, 1));
+        this.add(customLabel("Placeholder"), createConstrains(0, 2, 1, 1));
+
+        this.add(customLabel("Placeholder"), createConstrains(0, 3, 1, 1));
+        this.add(customLabel("Placeholder"), createConstrains(0, 4, 1, 1));
+
+        this.add(customLabel("Placeholder"), createConstrains(0, 5, 1, 1));
+        this.add(customLabel("Placeholder"), createConstrains(0, 6, 1, 1));
+
 
     }
 
     private JLabel customLabel(String text) {
         JLabel label = new JLabel(text);
         label.setForeground(Color.WHITE);
-        label.setAlignmentY(TOP_ALIGNMENT);
         return label;
     }
 

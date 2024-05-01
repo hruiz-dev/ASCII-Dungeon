@@ -12,8 +12,8 @@ public class Armadura extends Item {
 
     private int defentsa;
 
-    public Armadura(Formak forma, Vector2 posizioa, String izena, int erabilerak, int defentsa) {
-        super(forma, posizioa, izena, erabilerak);
+    public Armadura(Formak forma, String izena, int erabilerak, int defentsa) {
+        super(forma, izena, erabilerak);
         this.defentsa = defentsa;
     }
 

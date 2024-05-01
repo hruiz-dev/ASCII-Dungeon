@@ -21,7 +21,10 @@ public enum Formak {
     HEART1('H', "assets/ui/bihotza1-4.png"),
     HEART2('H', "assets/ui/bihotza2-4.png"),
     HEART3('H', "assets/ui/bihotza3-4.png"),
-    HEART4('H', "assets/ui/bihotzaOsorik.png");
+    HEART4('H', "assets/ui/bihotzaOsorik.png"),
+
+    SHIELD1('S', "assets/ui/eskudoa1-2.png"),
+    SHIELD2('S', "assets/ui/eskudoaOsorik.png");
     private final char symbol;
     private final Image irudia;
 

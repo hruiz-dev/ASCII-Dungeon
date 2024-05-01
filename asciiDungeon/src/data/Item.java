@@ -15,6 +15,12 @@ public abstract class Item extends GameObject {
         this.erabilerak = erabilerak;
     }
 
+    public Item(Formak forma, String izena, int erabilerak) {
+        super(forma);
+        this.izena = izena;
+        this.erabilerak = erabilerak;
+    }
+
     public void setErabilerak(int erabilerak) {
         this.erabilerak = erabilerak;
     }

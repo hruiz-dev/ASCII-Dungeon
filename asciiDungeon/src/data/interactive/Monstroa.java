@@ -27,7 +27,6 @@ public class Monstroa extends GameObject {
 
     public void setBizia(int bizia) {
         this.bizia = bizia;
-        System.out.println("Monstroaren bizia: " + bizia);
     }
 
     public int getAtakea() {
