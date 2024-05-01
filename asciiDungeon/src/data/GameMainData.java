@@ -15,7 +15,7 @@ public class GameMainData {
     private static Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
 
     private static JPanel ui = new UiPanel();
-    private static JPanel konsola = new KonsolaPanel();
+    private static KonsolaPanel konsola = new KonsolaPanel();
 
     private static List<Thread> threads = new ArrayList<>();
 
@@ -67,11 +67,11 @@ public class GameMainData {
         GameMainData.threads = threads;
     }
 
-    public static JPanel getKonsola() {
+    public static KonsolaPanel getKonsola() {
         return konsola;
     }
 
-    public static void setKonsola(JPanel konsola) {
+    public static void setKonsola(KonsolaPanel konsola) {
         GameMainData.konsola = konsola;
     }
 }

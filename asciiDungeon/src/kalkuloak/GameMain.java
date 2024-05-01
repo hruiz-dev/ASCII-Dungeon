@@ -4,6 +4,7 @@ import data.GameKeyListener;
 import data.GameMainData;
 import data.Vector2;
 import data.interactive.Jokalaria;
+import data.interactive.Monstroa;
 import data.noInteractive.Estatikoa;
 import data.GameObject;
 import data.exceptions.GameLogicException;
@@ -39,19 +40,29 @@ public class GameMain {
      */
     public void gameLoop() {
 //        testFunction();
-
+        List<Monstroa> borratzeko = new ArrayList<>();
         while (jokoaMartxan) {
             if (objetuak != null) {
 
                 GameObject[][] a = interactables.getMatrix();
-                List<GameObject> toUpdate = new ArrayList<>(objetuak);
-                for (GameObject go : toUpdate) {
+                for (GameObject go : objetuak) {
                     if (!go.getClass().equals(Estatikoa.class)) {
                         a = go.update();
+                        if (go instanceof Monstroa) {
+                            Monstroa monstroa = (Monstroa) go;
+                            if (monstroa.getHilda()) {
+                                borratzeko.add(monstroa);
+                            }
+                        }
 
                     }
                 }
-                objetuak = toUpdate;
+                // Monstroak hilda badaude ezabatu
+                for (Monstroa monstroa : borratzeko) {
+                    objetuak.remove(monstroa);
+                    a[monstroa.getX()][monstroa.getY()] = null;
+                }
+
                 interactables.updateMatrix(a);
 
             }

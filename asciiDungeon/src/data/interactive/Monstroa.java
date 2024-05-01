@@ -15,6 +15,7 @@ public class Monstroa extends GameObject {
 
     private int bizia = 10;
     private int atakea = 3;
+    private Boolean hilda = false;
 
     public Monstroa(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
@@ -27,6 +28,10 @@ public class Monstroa extends GameObject {
 
     public void setBizia(int bizia) {
         this.bizia = bizia;
+    }
+
+    public Boolean getHilda() {
+        return hilda;
     }
 
     public int getAtakea() {
@@ -78,7 +83,12 @@ public class Monstroa extends GameObject {
         GameObject objetua = GameMainData.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
             if (objetua instanceof Jokalaria) {
-                ((Jokalaria) objetua).setBizia(((Jokalaria) objetua).getBizia() - this.atakea);
+                Jokalaria a = (Jokalaria) objetua;
+                if (((Jokalaria) objetua).getArmadura().getDefentsa() > 0){
+                    a.getArmadura().setDefentsa(a.getArmadura().getDefentsa() - 1);
+                    return true;
+                }
+                a.setBizia(a.getBizia() - this.atakea);
 
             }
             return true;
@@ -94,7 +104,9 @@ public class Monstroa extends GameObject {
     public GameObject[][] update() {
         Random rand = new Random();
         if (bizia < 0) {
-            GameMainData.getInteractables().getMatrix()[getX()][getY()] = null;
+            GameMainData.getKonsola().setMezua("Monstroa hil da");
+            Jokalaria.getJokalaria().addPuntuazioa(100);
+            hilda = true;
             return GameMainData.getInteractables().getMatrix();
         }
        return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);

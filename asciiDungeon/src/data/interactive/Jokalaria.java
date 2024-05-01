@@ -8,17 +8,21 @@ import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import kalkuloak.GameMain;
 import render.GraficsConfig;
+import render.KonsolaPanel;
 
 public class Jokalaria extends GameObject {
 
     private static Jokalaria jokalaria;
     private int bizia = 20;
     private Arma arma;
-    private Armadura armadura = new Armadura(Formak.SHIELD3 , "Armadura", 0, 2);
+    private Armadura armadura = new Armadura(Formak.SHIELD3 , "Armadura", 0, 10);
     private int giltzak;
-    private char azkenZapaldutakoTekla;
 
+    private char azkenZapaldutakoTekla;
     private char azkenMugimendua;
+
+    private int puntuazioa = 0;
+
     private Jokalaria(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
         try {
@@ -88,6 +92,10 @@ public class Jokalaria extends GameObject {
         return azkenMugimendua;
     }
 
+    public void addPuntuazioa(int puntuazioa) {
+        this.puntuazioa += puntuazioa;
+    }
+
     /**
      * Funtzio honek zein direzioatan mugitu den jokalaria jasotzen du eta datu horrekin posizioa aldatzen dio.
      * @param x X ejean zenbat mugitu den
@@ -146,7 +154,8 @@ public class Jokalaria extends GameObject {
     }
 
     /**
-     * Funtzio honek jokalariak mina artu duen edo ez esaten digu eta mina artu badu bizia kentzen du.
+     * Funtzio honek jokalariak mina artu duen edo ez esaten digu eta mina artu badu bizia kentzen du, armadura
+     * badu bere defentsari bat kentzen dio.
      * @param x x-ejean zenbat mugitu den
      * @param y y-ejean zenbat mugitu den
      * @return mina artu badu true itzultzen du
@@ -154,8 +163,19 @@ public class Jokalaria extends GameObject {
     public Boolean minaArtu(int x, int y) {
         GameObject objetua = GameMainData.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
+
             if (objetua instanceof Monstroa) {
-                setBizia(getBizia() - ((Monstroa) objetua).getAtakea());
+
+                int atakea = ((Monstroa) objetua).getAtakea();
+
+                if (armadura.getDefentsa() > 0){
+                    armadura.setDefentsa(armadura.getDefentsa() -1);
+                    GameMainData.getKonsola().setMezua("Monstroak eskudoa jo du, defentsa 1 kendu dizu");
+                    return true;
+                }
+
+                setBizia(getBizia() - atakea);
+                GameMainData.getKonsola().setMezua("Monstroak atakatu zaitu, bizi kendu dizu -" + atakea);
                 return true;
             }
         }

@@ -11,6 +11,7 @@ public class KonsolaPanel extends JPanel {
         super();
         this.setSize(GraficsConfig.GAME_X_CANVAS_SIZE, 160);
         this.setBackground(Color.BLACK);
+        konsola.setForeground(Color.WHITE);
         this.add(konsola);
 
     }

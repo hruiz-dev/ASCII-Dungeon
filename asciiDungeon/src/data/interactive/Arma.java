@@ -8,6 +8,7 @@ import data.GameObject;
 import data.Item;
 import data.Vector2;
 import kalkuloak.GameMain;
+import render.KonsolaPanel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,8 +110,11 @@ public class Arma extends Item {
                 if (matriz[i][j] instanceof Monstroa) {
                     Monstroa monstroa = (Monstroa) matriz[i][j];
                     monstroa.setBizia(monstroa.getBizia() - atakea);
+                    GameMainData.getKonsola().setMezua("Monstroa atakatu duzu, bizi kendu diozu -" + atakea);
+                    return;
                 }
             }
+            GameMainData.getKonsola().setMezua("Ez duzu inor jo atakearekin");
         }
     }
 }

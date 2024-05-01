@@ -27,7 +27,7 @@ public class GameUi {
         frame.add(GameMainData.getKonsola(), createConstrains(0, 1, 6.6, 1));
 
         frame.addKeyListener(new GameKeyListener());
-        frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +32, GraficsConfig.GAME_Y_CANVAS_SIZE + 146);
+        frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +200, GraficsConfig.GAME_Y_CANVAS_SIZE + 172);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         GameMainData.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa1Atzekaldea.txt"));
