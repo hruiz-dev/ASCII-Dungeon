@@ -29,7 +29,6 @@ public class GameMain {
 
     private static Layers mapa = GameMainData.getMapa();
     private static Layers interactables = GameMainData.getInteractables();
-    private static UiPanel ui = GameMainData.getUi();
 
     private static List<Thread> threads = GameMainData.getThreads();
 

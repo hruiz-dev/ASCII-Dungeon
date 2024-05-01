@@ -61,7 +61,7 @@ public class Layers {
     }
 
     public void render() {
-        panel.repaint();
+        SwingUtilities.invokeLater(() -> panel.repaint());
     }
 
     /**

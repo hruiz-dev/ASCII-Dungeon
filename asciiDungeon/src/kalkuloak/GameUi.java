@@ -18,9 +18,12 @@ public class GameUi {
         layeredPane.add(GameMainData.getInteractables().getPanel(), JLayeredPane.PALETTE_LAYER);
 
         frame = new JFrame();
-        frame.setLayout(new BorderLayout());
-        frame.add(layeredPane, BorderLayout.CENTER);
-        frame.add(GameMainData.getUi(), BorderLayout.EAST);
+        frame.setLayout(new GridBagLayout());
+
+        frame.add(layeredPane, createConstrains(0, 0, 6.6, 4.8));
+
+        frame.add(GameMainData.getUi(), createConstrains(1, 0, 1, 4.8));
+
         frame.addKeyListener(new GameKeyListener());
         frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +32, GraficsConfig.GAME_Y_CANVAS_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,5 +34,23 @@ public class GameUi {
 
     public static JFrame getFrame() {
         return frame;
+    }
+
+    /**
+     * Funtzio honek gure framean panel bakoitzak zenbat okupatzen duen defintzn du
+     * @param gridx gure panelaren x posizioa
+     * @param gridy gure panelaren y posizioa
+     * @param gridwidth gure panelaren zabalera
+     * @param gridheight gure panelaren altuera
+     * @return panelaren konfigurazioa
+     */
+    private GridBagConstraints createConstrains(int gridx, int gridy, double gridwidth, double gridheight){
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = gridx;
+        c.gridy = gridy;
+        c.weightx = gridwidth;
+        c.weighty = gridheight;
+        c.fill = GridBagConstraints.BOTH;
+        return c;
     }
 }

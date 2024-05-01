@@ -14,12 +14,12 @@ import kalkuloak.GameMain;
 public class Bizia extends Ui{
 
     private static Bizia bizia;
-    private Layers biziaLayer = new Layers(1, 10, 1, 160, 16);
+    private Layers biziaLayer = new Layers(1, 5, 1, 80, 16);
 
     public Bizia( GameObject[][] datuak) {
         super(datuak);
         if (datuak == null) {
-            this.setDatuak(new GameObject[10][1]);
+            this.setDatuak(new GameObject[5][1]);
         }
         GameMainData.getUiKomponenteak().add(this);
     }
@@ -42,7 +42,7 @@ public class Bizia extends Ui{
     public void updateUi() {
         float x = (float) Jokalaria.getJokalaria().getBizia() /4;
         int i = 0;
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 5; j++) {
             this.getDatuak()[j][0] = null;
         }
         while (x > 0){

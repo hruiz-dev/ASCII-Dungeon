@@ -5,6 +5,7 @@ import render.Layers;
 import render.Ui;
 import render.UiPanel;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class GameMainData {
 
     private static Layers mapa = new Layers(0, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
     private static Layers interactables = new Layers(1, GraficsConfig.GAME_X_GRID_SIZE, GraficsConfig.GAME_Y_GRID_SIZE, GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
-    private static UiPanel ui = new UiPanel();
+    private static JPanel ui = new UiPanel();
 
     private static List<Thread> threads = new ArrayList<>();
 
@@ -51,11 +52,11 @@ public class GameMainData {
         GameMainData.interactables = interactables;
     }
 
-    public static UiPanel getUi() {
+    public static JPanel getUi() {
         return ui;
     }
 
-    public static void setUi(UiPanel ui) {
+    public static void setUi(JPanel ui) {
         GameMainData.ui = ui;
     }
 
