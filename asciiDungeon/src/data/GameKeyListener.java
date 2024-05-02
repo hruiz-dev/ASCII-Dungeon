@@ -1,6 +1,5 @@
 package data;
 
-import data.exceptions.GameLogicException;
 import data.interactive.Jokalaria;
 
 import java.awt.event.KeyEvent;

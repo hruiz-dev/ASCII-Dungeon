@@ -25,10 +25,6 @@ public class Armadura extends Item {
         this.defentsa = defentsa;
     }
 
-    /**
-     * Lurrean dagoen bitartean jokalariak armadura artu algo du, gero jokalaria jotzen duten bakoitzean mina gutxitzen du
-     * @return
-     */
     @Override
     public GameObject[][] update() {
         return null;

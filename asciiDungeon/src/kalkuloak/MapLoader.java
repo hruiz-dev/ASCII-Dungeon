@@ -11,10 +11,15 @@ import data.noInteractive.Formak;
 import render.GraficsConfig;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 
+
+/**
+ * Klase hau gure mapak kargatzeko erabiliko dugu.
+
+ */
 public class MapLoader {
 
     /**

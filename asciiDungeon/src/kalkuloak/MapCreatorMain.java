@@ -33,6 +33,9 @@ public class MapCreatorMain { ;
         new Thread(this::render).start();
     }
 
+    /**
+     * Metodo honek gure MapCretion objetua aktualizatzen du
+     */
     public void update(){
 
         while (true){
@@ -40,14 +43,19 @@ public class MapCreatorMain { ;
         }
     }
 
+    /**
+     * MapCretor-aren panela aktualizatzen du
+     */
     public void render(){
         while (true){
             background.render();
         }
     }
 
+    /**
+     * Mapa sortzen bukatutakoan hau artcxiboan gordetzen du, eta jokoan amaitzen da
+     */
     public void stop() {
-//TODO
         String s1;
 
         StringBuilder sb = new StringBuilder();

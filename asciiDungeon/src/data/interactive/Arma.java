@@ -59,11 +59,11 @@ public class Arma extends Item {
     }
 
     /**
-     * TODO : metodoak ondo funtzionatu beharra du
-     * @param posX
-     * @param posY
-     * @param dirX
-     * @param dirY
+     * Atakatzean azkeneko mogimenduaren informazioa erabilita, 2x3 matrizean atakea egingo du
+     * @param posX posizioa x
+     * @param posY posizioa y
+     * @param dirX posizioa x norabidea
+     * @param dirY posizioa y norabidea
      */
     public void atakeaEgin( int posX, int posY, int dirX, int dirY) {
         GameObject[][] matriz = GameMainData.getInteractables().getMatrix();

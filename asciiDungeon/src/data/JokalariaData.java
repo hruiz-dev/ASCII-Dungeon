@@ -4,6 +4,9 @@ import data.interactive.Arma;
 import data.interactive.Armadura;
 import data.noInteractive.Formak;
 
+/**
+ * Klase hau jokalariaren datuak gordetzeko erabiliko da.
+ */
 public class JokalariaData {
 
     private static int bizia;

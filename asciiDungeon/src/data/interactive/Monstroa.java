@@ -12,6 +12,9 @@ import render.GraficsConfig;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Klase hau mogitzen diren mostruoak sortzeko erabiltzen da.
+ */
 public class Monstroa extends GameObject {
 
     private int bizia = 10;
@@ -38,6 +41,12 @@ public class Monstroa extends GameObject {
         this.atakea = atakea;
     }
 
+    /**
+     * Metodo honek monstroa mugitzen du eta kasila pareta bada ez da mugituko, jokalaria badago mina egingo dio.
+     * @param x X posizioa
+     * @param y Y posizioa
+     * @return GameObject[][] - Monstroaren posizio berria
+     */
     public GameObject[][] mugitu(int x, int y) {
         if (x > GraficsConfig.GAME_X_GRID_SIZE || y > GraficsConfig.GAME_Y_GRID_SIZE) {
             return GameMainData.getInteractables().getMatrix();

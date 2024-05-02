@@ -19,6 +19,9 @@ public class Hasiera {
         GameMain.getGameMain().init();
     }
 
+    /**
+     * Metodo honek gure maparen editorea hasieratzen du.
+     */
     public static void startMapBuilder(){
         JFrame frame = new JFrame();
         MapCreatorMain a = MapCreatorMain.getMapCreatorData();

@@ -175,6 +175,11 @@ public class Jokalaria extends GameObject {
     return false;
     }
 
+    /**
+     * Jokalariak giltza badu atea irekiko du eta atearen azpiko parata lurra-ren gatik aldatuko du
+     * @param x x-ejean posizioa
+     * @param y y-ejean posizioa
+     */
     public void ateaIreki(int x, int y) {
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
         GameObject[][] mapa = GameMainData.getMapa().getMatrix();
@@ -188,6 +193,11 @@ public class Jokalaria extends GameObject {
         }
     }
 
+    /**
+     * Metodo honek jokalariak altxorra bat ireki duen detektatzen du
+     * @param x x ejean posizioa
+     * @param y y ejean posizioa
+     */
     public void alTxorraIreki(int x,int y) {
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
         GameObject objetua = matrizea[getX() + x][getY() + y];
@@ -199,6 +209,10 @@ public class Jokalaria extends GameObject {
 
     }
 
+    /**
+     * Metodo honek Azkeneko mogimendua erabilita jokalaria mugitzen du
+     * @return jokalariaren posizioa aldatuta duen matrizea
+     */
     @Override
     public GameObject[][] update() {
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();

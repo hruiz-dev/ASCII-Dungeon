@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klase honeta gure jokuko datuak gordetzeko erabiliko dugu.
+ */
 public class GameMainData {
 
     private static List<GameObject> objetuak = new ArrayList<>();

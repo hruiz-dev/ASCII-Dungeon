@@ -104,6 +104,9 @@ public class GameMain {
         }
     }
 
+    /**
+     * MEtodo honek jokoa galtzean hau gelditu egiten du eta menua erakusten du.
+     */
     public void gameOver() {
         jokoaMartxan = false;
         GameUi.getFrame().dispose();
