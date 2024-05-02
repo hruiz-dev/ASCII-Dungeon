@@ -1,6 +1,7 @@
 package kalkuloak;
 
 import data.GameMainData;
+import data.JokalariaData;
 import data.interactive.Jokalaria;
 import data.interactive.Monstroa;
 import data.noInteractive.Estatikoa;
@@ -9,6 +10,8 @@ import render.*;
 import render.panelak.GameUi;
 import render.panelak.Menu;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,8 +114,13 @@ public class GameMain {
         jokoaMartxan = false;
         GameUi.getFrame().dispose();
         threads.forEach(Thread::interrupt);
-        Menu panela = new Menu();
-        panela.gameOverMezua("Game Over");
+        JFrame frame = new JFrame("Game Over");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 400);
+        frame.setLayout(new GridLayout(2,1));
+        frame.add(new JLabel("Partida amaitu da"));
+        frame.add(new JLabel("Lortu duzun Dirua: " + JokalariaData.getDirua()));
+        frame.setVisible(true);
     }
 
     /**
