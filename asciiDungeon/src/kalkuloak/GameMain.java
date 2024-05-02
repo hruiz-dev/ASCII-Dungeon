@@ -1,21 +1,15 @@
 package kalkuloak;
 
-import data.GameKeyListener;
 import data.GameMainData;
-import data.Vector2;
 import data.interactive.Jokalaria;
 import data.interactive.Monstroa;
 import data.noInteractive.Estatikoa;
 import data.GameObject;
-import data.exceptions.GameLogicException;
-import data.noInteractive.Formak;
 import render.*;
-import render.Menu;
+import render.panelak.GameUi;
+import render.panelak.Menu;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -39,8 +33,7 @@ public class GameMain {
      * Metodo honek gure jokoaren eragiketa logikoak egingo ditu.
      */
     public void gameLoop() {
-//        testFunction();
-        List<Monstroa> borratzeko = new ArrayList<>();
+        List<GameObject> borratzeko = new ArrayList<>();
         while (jokoaMartxan) {
             if (objetuak != null) {
 
@@ -48,23 +41,19 @@ public class GameMain {
                 for (GameObject go : objetuak) {
                     if (!go.getClass().equals(Estatikoa.class)) {
                         a = go.update();
-                        if (go instanceof Monstroa) {
-                            Monstroa monstroa = (Monstroa) go;
-                            if (monstroa.getHilda()) {
-                                borratzeko.add(monstroa);
-                            }
+                        if (!go.getPatailan()){
+                            borratzeko.add((Monstroa) go);
                         }
 
                     }
                 }
                 // Monstroak hilda badaude ezabatu
-                for (Monstroa monstroa : borratzeko) {
+                for (GameObject monstroa : borratzeko) {
                     objetuak.remove(monstroa);
                     a[monstroa.getX()][monstroa.getY()] = null;
                 }
 
                 interactables.updateMatrix(a);
-
             }
             // hemen gure aplikazioaren haria gelditzen dugu gure CPU-a ez gainkargatzeko
             try {
@@ -74,6 +63,9 @@ public class GameMain {
         }
     }
 
+    /**
+     * Metod honek gure jokalaria kontrolatuko du.
+     */
     public void playerLoop() {
         while (jokoaMartxan) {
             interactables.updateMatrix(Jokalaria.getJokalaria().update());
@@ -96,6 +88,7 @@ public class GameMain {
      */
     public void render() {
         while (jokoaMartxan) {
+
             if (uiKomponenteak != null) {
 
                 for (Ui ui : uiKomponenteak) {
@@ -105,29 +98,10 @@ public class GameMain {
             }
             // delay bat gehitu gure CPU-a ez gainkargatzeko
             try {
-                Thread.sleep(100);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
             }
         }
-    }
-
-    public void testFunction(){
-        GameObject[][] a = interactables.getMatrix();
-        try {
-            a[3][4] = Jokalaria.getJokalaria();
-            Jokalaria.getJokalaria().setPosizioa(new Vector2(3, 4));
-        } catch (GameLogicException e) {
-            throw new RuntimeException(e);
-        }
-        interactables.updateMatrix(a);
-
-        GameObject[][] b = mapa.getMatrix();
-        for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
-            for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
-                b[i][j] = new Estatikoa(Formak.FLOOR);
-            }
-        }
-        mapa.updateMatrix(b);
     }
 
     public void gameOver() {

@@ -1,17 +1,10 @@
 package data.interactive;
 
 import data.GameMainData;
-import data.exceptions.GameLogicException;
-import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import data.GameObject;
 import data.Item;
 import data.Vector2;
-import kalkuloak.GameMain;
-import render.KonsolaPanel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Objetu hau jokalariak erabiltzen duen arma da eta lurrean botata edo jokalariak eskueta eduki alko du,
@@ -21,8 +14,8 @@ public class Arma extends Item {
 
     private  int atakea;
 
-    public Arma(Formak forma, Vector2 posizioa, String izena, int erabilerak, int atakea) {
-        super(forma, posizioa, izena, erabilerak);
+    public Arma(Formak forma, String izena, int erabilerak, int atakea) {
+        super(forma, izena, erabilerak);
         this.atakea = atakea;
     }
 

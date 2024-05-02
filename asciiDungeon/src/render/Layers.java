@@ -60,6 +60,9 @@ public class Layers {
         return matrix;
     }
 
+    /**
+     * jokuko panela renderizatzen du.
+     */
     public void render() {
         SwingUtilities.invokeLater(() -> panel.repaint());
     }

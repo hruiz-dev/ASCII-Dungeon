@@ -37,9 +37,4 @@ public abstract class Ui {
      * Metodo hau pantailako Ui-a berriz kargatzeko erabiliko eta renderizatzeko erabiliko da.
      */
     public abstract void updateUi();
-
-    /**
-     * Funtzi honek gure Ui objetua gameobjet Objtu Estakoikoa kalsera pasatuko du gero renderizazio matrizean sartzeko
-     * @return Ui diseinua GameObject matrizea bezela
-     */
 }

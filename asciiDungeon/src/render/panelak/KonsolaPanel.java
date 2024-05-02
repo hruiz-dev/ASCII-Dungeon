@@ -1,8 +1,13 @@
-package render;
+package render.panelak;
+
+import render.GraficsConfig;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klase hau partidari buruzko mezu txikiak erakusteko erabiltzen da.
+ */
 public class KonsolaPanel extends JPanel {
 
     private JLabel konsola = new JLabel();
@@ -16,6 +21,10 @@ public class KonsolaPanel extends JPanel {
 
     }
 
+    /**
+     * Konsolako mezua ladatzen du
+     * @param mezua Mezua
+     */
     public void setMezua(String mezua){
         konsola.setText(mezua);
     }

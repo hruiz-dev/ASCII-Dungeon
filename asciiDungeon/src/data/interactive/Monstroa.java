@@ -2,6 +2,7 @@ package data.interactive;
 
 import data.GameMainData;
 import data.GameObject;
+import data.JokalariaData;
 import data.Vector2;
 import data.exceptions.GameLogicException;
 import data.noInteractive.Formak;
@@ -15,7 +16,6 @@ public class Monstroa extends GameObject {
 
     private int bizia = 10;
     private int atakea = 3;
-    private Boolean hilda = false;
 
     public Monstroa(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
@@ -28,10 +28,6 @@ public class Monstroa extends GameObject {
 
     public void setBizia(int bizia) {
         this.bizia = bizia;
-    }
-
-    public Boolean getHilda() {
-        return hilda;
     }
 
     public int getAtakea() {
@@ -105,8 +101,7 @@ public class Monstroa extends GameObject {
         Random rand = new Random();
         if (bizia < 0) {
             GameMainData.getKonsola().setMezua("Monstroa hil da");
-            Jokalaria.getJokalaria().addPuntuazioa(100);
-            hilda = true;
+            setPatailan(false);
             return GameMainData.getInteractables().getMatrix();
         }
        return mugitu(rand.nextInt(3) -1, rand.nextInt(3) -1);

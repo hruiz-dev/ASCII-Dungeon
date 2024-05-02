@@ -1,17 +1,23 @@
-package kalkuloak;
+package render.panelak;
 
 import data.GameKeyListener;
 import data.GameMainData;
-import render.Bizia;
+import kalkuloak.MapLoader;
 import render.GraficsConfig;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * komponete ha gure jokuko frame-a da, honetan beste panel guztiak daude
+ */
 public class GameUi {
 
     private static JFrame frame;
 
+    /**
+     * Klasearen konstruktorea, objetu guztiak rekolokatzen ditu pere posizioan
+     */
     public GameUi() {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.add(GameMainData.getMapa().getPanel(), JLayeredPane.DEFAULT_LAYER);
@@ -27,7 +33,7 @@ public class GameUi {
         frame.add(GameMainData.getKonsola(), createConstrains(0, 1, 6.6, 1));
 
         frame.addKeyListener(new GameKeyListener());
-        frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + GraficsConfig.UI_X_CANVAS_SIZE +200, GraficsConfig.GAME_Y_CANVAS_SIZE + 172);
+        frame.setSize(GraficsConfig.GAME_X_FRAME_SIZE, GraficsConfig.GAME_Y_FRAME_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         GameMainData.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa1Atzekaldea.txt"));

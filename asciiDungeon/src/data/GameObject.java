@@ -10,6 +10,7 @@ import kalkuloak.GameMain;
 public abstract class GameObject {
     private Vector2 posizioa;
     private Formak forma;
+    private Boolean patailan = true;
 
     public GameObject(Formak forma, Vector2 posizioa) {
         this.forma = forma;
@@ -27,6 +28,14 @@ public abstract class GameObject {
 
     public int getX() {
         return posizioa.getX();
+    }
+
+    public Boolean getPatailan() {
+        return patailan;
+    }
+
+    public void setPatailan(Boolean patailan) {
+        this.patailan = patailan;
     }
 
     /**

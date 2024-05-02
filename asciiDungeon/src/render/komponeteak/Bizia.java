@@ -1,17 +1,16 @@
-package render;
+package render.komponeteak;
 
-import data.GameMainData;
 import data.GameObject;
 import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
-import data.Vector2;
-import kalkuloak.GameMain;
+import render.Layers;
+import render.Ui;
 
 /**
  * Klase hau gure bizia interfazean agertzeaz arduratzen da
  */
-public class Bizia extends Ui{
+public class Bizia extends Ui {
 
     private static Bizia bizia;
     private Layers biziaLayer = new Layers(1, 5, 1, 80, 16);
@@ -28,6 +27,10 @@ public class Bizia extends Ui{
         return biziaLayer;
     }
 
+    /**
+     * Sortutako Bizia objetu bat bueltatzen dizu
+     * @return Bizia objetua
+     */
     public static Bizia getBizia() {
         if (bizia == null) {
             bizia = new Bizia( null);

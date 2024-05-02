@@ -3,6 +3,7 @@ package kalkuloak;
 import data.GameObject;
 import data.Vector2;
 import data.exceptions.GameLogicException;
+import data.interactive.Altxorra;
 import data.interactive.Jokalaria;
 import data.interactive.Monstroa;
 import data.noInteractive.Estatikoa;
@@ -67,7 +68,7 @@ public class MapLoader {
         } else if (symbol == Formak.DOOR.getSymbol()) {
             return new Estatikoa(Formak.DOOR);
         } else if (symbol == Formak.TREASURE.getSymbol()) {
-            return new Estatikoa(Formak.TREASURE);
+            return new Altxorra(Formak.TREASURE, posizioa);
         }
         return null;
     }

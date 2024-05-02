@@ -2,34 +2,29 @@ package data.interactive;
 
 import data.GameMainData;
 import data.GameObject;
+import data.JokalariaData;
 import data.Vector2;
 import data.exceptions.GameLogicException;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import kalkuloak.GameMain;
 import render.GraficsConfig;
-import render.KonsolaPanel;
 
 public class Jokalaria extends GameObject {
 
     private static Jokalaria jokalaria;
-    private int bizia = 20;
-    private Arma arma;
-    private Armadura armadura = new Armadura(Formak.SHIELD3 , "Armadura", 0, 10);
+    private int bizia = JokalariaData.getBizia();
+    private Arma arma = JokalariaData.getArma();
+    private Armadura armadura = JokalariaData.getArmadura();
     private int giltzak;
 
-    private char azkenZapaldutakoTekla;
-    private char azkenMugimendua;
+    private char azkenZapaldutakoTekla = JokalariaData.getAzkenZapaldutakoTekla();
+    private char azkenMugimendua = JokalariaData.getAzkenMugimendua();
 
-    private int puntuazioa = 0;
+    private int dirua = JokalariaData.getDirua();
 
     private Jokalaria(Formak forma, Vector2 posizioa) {
         super(forma, posizioa);
-        try {
-            arma = new Arma(Formak.FLOOR, new Vector2(0, 0), "Ezpata", 0, 3);
-        } catch (GameLogicException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     /**
@@ -92,10 +87,6 @@ public class Jokalaria extends GameObject {
         return azkenMugimendua;
     }
 
-    public void addPuntuazioa(int puntuazioa) {
-        this.puntuazioa += puntuazioa;
-    }
-
     /**
      * Funtzio honek zein direzioatan mugitu den jokalaria jasotzen du eta datu horrekin posizioa aldatzen dio.
      * @param x X ejean zenbat mugitu den
@@ -112,6 +103,8 @@ public class Jokalaria extends GameObject {
         ateaIreki(x, y);
 
         giltzaArtu(x, y);
+
+        alTxorraIreki(x, y);
 
         if (kolisioa(x, y) || minaArtu(x, y)) {
             return matrizea;
@@ -148,7 +141,7 @@ public class Jokalaria extends GameObject {
         GameObject objetua = GameMainData.getInteractables().getMatrix()[getX()+ x][getY()+ y];
         if (objetua != null) {
             if (objetua.getForma().getSymbol() == Formak.KEY.getSymbol()) {
-                setGiltzak(getGiltzak() + 1);
+                JokalariaData.setGiltzak(JokalariaData.getGiltzak() + 1);
             }
         }
     }
@@ -187,12 +180,23 @@ public class Jokalaria extends GameObject {
         GameObject[][] mapa = GameMainData.getMapa().getMatrix();
         if (matrizea[getX() + x][getY() + y] != null) {
             if (matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.DOOR.getSymbol()) {
-                if (getGiltzak() > 0) {
-                    setGiltzak(getGiltzak() - 1);
+                if (JokalariaData.getGiltzak() > 0) {
+                    JokalariaData.setGiltzak(JokalariaData.getGiltzak() - 1);
                     mapa[getX() + x][getY() + y] = new Estatikoa(Formak.FLOOR);
                 }
             }
         }
+    }
+
+    public void alTxorraIreki(int x,int y) {
+        GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
+        GameObject objetua = matrizea[getX() + x][getY() + y];
+        if (objetua != null) {
+            if (objetua.getForma().getSymbol() == Formak.TREASURE.getSymbol()) {
+                ((Altxorra)  matrizea[getX() + x][getY() + y]).update();
+            }
+        }
+
     }
 
     @Override

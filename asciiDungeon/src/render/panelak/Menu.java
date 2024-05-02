@@ -1,9 +1,13 @@
-package render;
+package render.panelak;
 import kalkuloak.Hasiera;
+import render.GraficsConfig;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klase hau gure hsierako menua kargatzen duen klasea da.
+ */
 public class Menu extends JFrame {
 
     private JButton exit;
@@ -53,6 +57,10 @@ public class Menu extends JFrame {
         this.repaint();
     }
 
+    /**
+     * partida galdutakoan erakusten den mezua
+     * @param mezua mezua
+     */
     public void gameOverMezua(String mezua) {
         JPanel panela = new JPanel();
         panela.add(new JLabel(mezua));

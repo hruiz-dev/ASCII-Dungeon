@@ -1,6 +1,8 @@
 package data;
 
 import render.*;
+import render.panelak.KonsolaPanel;
+import render.panelak.UiPanel;
 
 import javax.swing.*;
 import java.util.ArrayList;

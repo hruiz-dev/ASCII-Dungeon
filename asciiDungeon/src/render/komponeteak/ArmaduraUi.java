@@ -1,14 +1,15 @@
-package render;
+package render.komponeteak;
 
 import data.GameObject;
 import data.interactive.Armadura;
 import data.interactive.Jokalaria;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
-import data.Vector2;
+import render.Layers;
+import render.Ui;
 
 /**
- * Klase au armadura badugu hau interfazean agertzeaz arduratzen da.
+ * Klase hau armadura dugunena hau interfazean agertzeaz arduratzen da.
  */
 public class ArmaduraUi extends Ui {
 
@@ -20,6 +21,10 @@ public class ArmaduraUi extends Ui {
         super(datuak);
     }
 
+    /**
+     * sortutako ArmaduraUi objetu bat bueltatzen dizu
+     * @return ArmaduraUi objetua
+     */
     public static ArmaduraUi getArmaduraUi() {
         if (armaduraUi == null) {
             armaduraUi = new ArmaduraUi(new GameObject[5][1 ]);
@@ -27,10 +32,14 @@ public class ArmaduraUi extends Ui {
         return armaduraUi;
     }
 
+
     public Layers getArmaduraLayer() {
         return armaduraLayer;
     }
 
+    /**
+     * Interfazean zenbait armadura agertu behar diren klakulatzen du eta hori interfazera pasatu.
+     */
     @Override
     public void updateUi() {
         Armadura armadura = Jokalaria.getJokalaria().getArmadura();

@@ -1,15 +1,10 @@
 package kalkuloak;
 
-import data.GameKeyListener;
 import data.MapCreatorKeyListener;
-import render.Bizia;
 import render.GraficsConfig;
-import render.Menu;
+import render.panelak.Menu;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class Hasiera {
 

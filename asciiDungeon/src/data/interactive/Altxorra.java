@@ -1,11 +1,9 @@
 package data.interactive;
 
-import data.GameMainData;
+import data.*;
 import data.noInteractive.Formak;
-import data.GameObject;
-import data.Item;
-import data.Vector2;
-import kalkuloak.GameMain;
+
+import java.util.Random;
 
 /**
  * Objetua honetan gure partdan zear eduki al ditugun altxorrak dira, hauek guk nahi dugu Item mota gorde alko dute.
@@ -17,7 +15,10 @@ public class Altxorra extends GameObject {
     public Altxorra(Formak forma, Vector2 posizioa, Item objetua) {
         super(forma, posizioa);
         this.objetua = objetua;
-        GameMainData.getObjetuak().add(this);
+    }
+
+    public Altxorra(Formak forma, Vector2 posizioa) {
+        super(forma, posizioa);
     }
 
     public Item getObjetua() {
@@ -28,13 +29,24 @@ public class Altxorra extends GameObject {
         this.objetua = objetua;
     }
 
+    public void sortuObjetua(){
+
+    }
+
     /**
      * Funtzi honek gure altxorra irrekitzean eta irakitakoan Item a jokalariari emateaz arduratuko da.
      * @return Matriza aktualizatuta.
      */
     @Override
     public GameObject[][] update() {
+        if (objetua == null) {
+            Random rand = new Random();
+            int a = rand.nextInt(100);
+            JokalariaData.addDirua(a);
+            GameMainData.getKonsola().setMezua("Altxorrean " + a + " txanpon aurkitu dituzu!");
+        }
         return null;
-        // TODO: altxorra irekitzea, degarsatzea eta objetua emateko funtzionalitatea implementatu
+        //TODO: Maybe implementatu metodoa arma edo armadura ekipatzeko aukerarekin
+
     }
 }
