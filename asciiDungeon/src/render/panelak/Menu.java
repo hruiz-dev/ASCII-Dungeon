@@ -22,7 +22,7 @@ public class Menu extends JFrame {
         super();
         this.setSize(GraficsConfig.GAME_X_CANVAS_SIZE, GraficsConfig.GAME_Y_CANVAS_SIZE);
         panel.setLayout(new BorderLayout());
-        panel.add(new JLabel("Menu"), BorderLayout.NORTH);
+        panel.add(new JLabel("H Dungeon"), BorderLayout.NORTH);
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridBagLayout());
@@ -42,7 +42,7 @@ public class Menu extends JFrame {
 
         bottomPanel.add(this.start);
 
-        this.createMap = new JButton("Mapaka Sortzailea(Experimental)");
+        this.createMap = new JButton("Mapa Sortzailea(Experimental)");
         this.createMap.addActionListener(e -> {
             this.dispose();
 
@@ -50,15 +50,34 @@ public class Menu extends JFrame {
         });
 
         bottomPanel.add(this.createMap);
-        panel.add(bottomPanel, BorderLayout.CENTER);
+
+
+        //panelean jokuari buruzko informazioa gehitu.
+        JPanel informazioaPanel = new JPanel();
+        informazioaPanel.setLayout(new GridLayout(10, 0));
+        informazioaPanel.add(new JLabel("Informazioa:"));
+        informazioaPanel.add(new JLabel("Jokoa martxan jartzeko start botoia sakatu."));
+        informazioaPanel.add(new JLabel("Jokoa amaitzeko exit botoia sakatu"));
+        informazioaPanel.add(new JLabel("Mapa sortzailea martxan jartzeko Mapa Sortzailea botoia sakatu."));
+        informazioaPanel.add(new JLabel("jokalraia mugitzeko w,a, s, d botoiak erabiliko dira."));
+        informazioaPanel.add(new JLabel("w-ek joklaraia goraka mugitzen du."));
+        informazioaPanel.add(new JLabel("a-ek jokalria ezkerrera mugitzen du."));
+        informazioaPanel.add(new JLabel("s-ek jokalria behera mugitzen du."));
+        informazioaPanel.add(new JLabel("d-ek jokalria eskubira mugitzen du."));
+        informazioaPanel.add(new JLabel("Espazioa sakatzean jokalria atakatu egingo du azkena mugitu zaren direzioan 2x3 kasilako alkanzea du."));
+
+
+        JPanel subpanel = new JPanel();
+        subpanel.setLayout(new GridLayout(2, 1));
+
+        subpanel.add(informazioaPanel);
+        subpanel.add(bottomPanel);
+
+        panel.add(subpanel, BorderLayout.CENTER);
+
         this.add(panel);
         this.setVisible(true);
         this.repaint();
     }
-
-    /**
-     * partida galdutakoan erakusten den mezua
-     * @param mezua mezua
-     */
 
 }

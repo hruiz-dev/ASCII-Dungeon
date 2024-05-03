@@ -24,7 +24,7 @@ public class GameMainData {
 
     private static List<Thread> threads = new ArrayList<>();
     private static int momentukoMapa = 0;
-    private static int mapaTotalak = 2;
+    private static int mapaTotalak = 3;
 
     public static int getMapaTotalak() {
         return mapaTotalak;

@@ -106,7 +106,9 @@ public class Jokalaria extends GameObject {
 
         alTxorraIreki(x, y);
 
-        portaleanSartu(x, y);
+        if (portaleanSartu(x, y)) {
+            return GameMainData.getInteractables().getMatrix();
+        }
 
         if (kolisioa(x, y) || minaArtu(x, y)) {
             return matrizea;
@@ -153,13 +155,15 @@ public class Jokalaria extends GameObject {
      * @param x x-ejean zenbat mugitu den
      * @param y y-ejean zenbat mugitu den
      */
-    public void portaleanSartu(int x, int y){
+    public Boolean portaleanSartu(int x, int y){
         GameObject objetua = GameMainData.getInteractables().getMatrix()[getX()+ x][getY()+ y];
         if (objetua != null) {
             if (objetua.getForma().getSymbol() == Formak.PORTAL.getSymbol()) {
                 objetua.update();
+                return true;
             }
         }
+        return false;
     }
 
     /**

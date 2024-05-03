@@ -10,13 +10,17 @@ public class Portal extends GameObject {
         super(forma);
     }
 
+    /**
+     * Poratalaren update metodo ejekutatzean, mapaz aldatuko dugu
+     * @return null
+     */
     @Override
     public GameObject[][] update() {
         GameMainData.setMomentukoMapa(GameMainData.getMomentukoMapa()+1);
         if (GameMainData.getMomentukoMapa() < GameMainData.getMapaTotalak()) {
             GameMain.getGameMain().changeMap();
         } else {
-            // gameMain Win game
+            GameMain.getGameMain().winGame();
         }
 
         return null;

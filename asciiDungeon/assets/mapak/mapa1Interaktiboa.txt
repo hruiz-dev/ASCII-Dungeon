@@ -1,7 +1,7 @@
                                                                   
                                                                   
-            T                      T             T              P
-                                                           E      
+            T                      T             T
+                                                           E   P
    @                 D                                            
                                                                   
    K                                 E     T     E                

@@ -45,7 +45,7 @@ public class GameMain {
                     if (!go.getClass().equals(Estatikoa.class)) {
                         a = go.update();
                         if (!go.getPatailan()){
-                            borratzeko.add((Monstroa) go);
+                            borratzeko.add(go);
                         }
 
                     }
@@ -132,6 +132,11 @@ public class GameMain {
 
         new GameUi();
 
+        // Gure mapak matrizera gehitu
+        int b = GameMainData.getMomentukoMapa();
+        GameMainData.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa" + b + "Atzekaldea.txt"));
+        GameMainData.getInteractables().updateMatrix(MapLoader.kargatuBackground("mapa" + b +"Interaktiboa.txt"));
+
         threads.clear();
 
         // Hari ezberdinak erabiliz gure jukoaren logika eta renderizazio klakuloak separatzen ditugu
@@ -147,7 +152,7 @@ public class GameMain {
     }
 
     /**
-     * Metodo honk gure mapa urrengo mapaen gatik aldatzen du.
+     * Metodo honk gure mapa hurrengo mapaengatik aldatzen du.
      */
     public void changeMap(){
         objetuak.clear();
@@ -160,4 +165,19 @@ public class GameMain {
         interactables.updateMatrix(MapLoader.kargatuBackground("mapa" + a + "Interaktiboa.txt" ));
     }
 
+    /**
+     * Metodo honek jokua irabaztewan agertzen den menua erakusten du.
+     */
+    public void winGame() {
+        jokoaMartxan = false;
+        GameUi.getFrame().dispose();
+        threads.forEach(Thread::interrupt);
+        JFrame frame = new JFrame("Irabazi duzu");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 400);
+        frame.setLayout(new GridLayout(2,1));
+        frame.add(new JLabel("Partida amaitu da, Mazmorratik atera zara. Zorionak!"));
+        frame.add(new JLabel("Lortu duzun Dirua: " + JokalariaData.getDirua()));
+        frame.setVisible(true);
+    }
 }

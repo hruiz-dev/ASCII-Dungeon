@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Klase honeta gure acii karakterak eta iruaduak mapeatzeko erabiliko dugu.
+ * Klase honeta gure acsii karakterak eta iruaduak mapeatzeko erabiliko dugu.
  */
 public enum Formak {
     WALL('#', "assets/pareta.png"),
