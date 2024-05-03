@@ -25,7 +25,9 @@ public enum Formak {
 
     SHIELD1('S', "assets/ui/eskudoa1-2.png"),
     SHIELD2('S', "assets/ui/eskudoaOsorik.png"),
-    SHIELD3('S', "assets/ui/eskudoa0-2.png");
+    SHIELD3('S', "assets/ui/eskudoa0-2.png"),
+
+    PORTAL('P', "assets/portal.png");
     private final char symbol;
     private final Image irudia;
 

@@ -25,6 +25,7 @@ public class Menu extends JFrame {
         panel.add(new JLabel("Menu"), BorderLayout.NORTH);
 
         JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new GridBagLayout());
 
         this.exit = new JButton("Exit");
         this.exit.addActionListener(e -> {
@@ -41,14 +42,12 @@ public class Menu extends JFrame {
 
         bottomPanel.add(this.start);
 
-        this.createMap = new JButton("Create Map");
+        this.createMap = new JButton("Mapaka Sortzailea(Experimental)");
         this.createMap.addActionListener(e -> {
             this.dispose();
 
             new Thread((Hasiera::startMapBuilder)).start();
         });
-
-        panel.add(new JLabel("Art Contributor: Luken Franco"), BorderLayout.SOUTH);
 
         bottomPanel.add(this.createMap);
         panel.add(bottomPanel, BorderLayout.CENTER);
@@ -61,11 +60,5 @@ public class Menu extends JFrame {
      * partida galdutakoan erakusten den mezua
      * @param mezua mezua
      */
-    public void gameOverMezua(String mezua) {
-        JPanel panela = new JPanel();
-        panela.add(new JLabel(mezua));
-        this.panel.add(panela, BorderLayout.EAST);
-        this.revalidate();
-        this.repaint();
-    }
+
 }

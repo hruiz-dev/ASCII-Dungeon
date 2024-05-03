@@ -146,4 +146,18 @@ public class GameMain {
         });
     }
 
+    /**
+     * Metodo honk gure mapa urrengo mapaen gatik aldatzen du.
+     */
+    public void changeMap(){
+        objetuak.clear();
+        mapa.setMatrixNull();
+        interactables.setMatrixNull();
+        mapa.render();
+        interactables.render();
+        int a = GameMainData.getMomentukoMapa();
+        mapa.updateMatrix(MapLoader.kargatuBackground("mapa" + a + "Atzekaldea.txt" ));
+        interactables.updateMatrix(MapLoader.kargatuBackground("mapa" + a + "Interaktiboa.txt" ));
+    }
+
 }

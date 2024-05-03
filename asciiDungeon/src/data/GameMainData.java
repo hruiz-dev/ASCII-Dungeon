@@ -23,6 +23,24 @@ public class GameMainData {
     private static KonsolaPanel konsola = new KonsolaPanel();
 
     private static List<Thread> threads = new ArrayList<>();
+    private static int momentukoMapa = 0;
+    private static int mapaTotalak = 2;
+
+    public static int getMapaTotalak() {
+        return mapaTotalak;
+    }
+
+    public static void setMapaTotalak(int mapaTotalak) {
+        GameMainData.mapaTotalak = mapaTotalak;
+    }
+
+    public static int getMomentukoMapa() {
+        return momentukoMapa;
+    }
+
+    public static void setMomentukoMapa(int momentukoMapa) {
+        GameMainData.momentukoMapa = momentukoMapa;
+    }
 
     public static List<GameObject> getObjetuak() {
         return objetuak;

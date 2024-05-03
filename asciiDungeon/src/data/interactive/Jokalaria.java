@@ -106,6 +106,8 @@ public class Jokalaria extends GameObject {
 
         alTxorraIreki(x, y);
 
+        portaleanSartu(x, y);
+
         if (kolisioa(x, y) || minaArtu(x, y)) {
             return matrizea;
         }
@@ -142,6 +144,20 @@ public class Jokalaria extends GameObject {
         if (objetua != null) {
             if (objetua.getForma().getSymbol() == Formak.KEY.getSymbol()) {
                 JokalariaData.setGiltzak(JokalariaData.getGiltzak() + 1);
+            }
+        }
+    }
+
+    /**
+     * Metodo honek gure jokalaria portalen sartu en detektatzen du eta horrela bada
+     * @param x x-ejean zenbat mugitu den
+     * @param y y-ejean zenbat mugitu den
+     */
+    public void portaleanSartu(int x, int y){
+        GameObject objetua = GameMainData.getInteractables().getMatrix()[getX()+ x][getY()+ y];
+        if (objetua != null) {
+            if (objetua.getForma().getSymbol() == Formak.PORTAL.getSymbol()) {
+                objetua.update();
             }
         }
     }

@@ -64,7 +64,7 @@ public class Layers {
      * jokuko panela renderizatzen du.
      */
     public void render() {
-        SwingUtilities.invokeLater(() -> panel.repaint());
+        panel.repaint();
     }
 
     /**
@@ -74,5 +74,13 @@ public class Layers {
     public void updateMatrix(GameObject[][] newMatrix) {
         this.matrix = newMatrix;
         render();
+    }
+
+    public void setMatrixNull() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                matrix[i][j] = null;
+            }
+        }
     }
 }

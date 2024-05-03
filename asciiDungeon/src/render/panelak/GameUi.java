@@ -36,8 +36,10 @@ public class GameUi {
         frame.setSize(GraficsConfig.GAME_X_FRAME_SIZE, GraficsConfig.GAME_Y_FRAME_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        GameMainData.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa1Atzekaldea.txt"));
-        GameMainData.getInteractables().updateMatrix(MapLoader.kargatuBackground("mapa1Interaktiboa.txt"));
+
+        int b = GameMainData.getMomentukoMapa();
+        GameMainData.getMapa().updateMatrix(MapLoader.kargatuBackground("mapa" + b + "Atzekaldea.txt"));
+        GameMainData.getInteractables().updateMatrix(MapLoader.kargatuBackground("mapa" + b +"Interaktiboa.txt"));
     }
 
     public static JFrame getFrame() {

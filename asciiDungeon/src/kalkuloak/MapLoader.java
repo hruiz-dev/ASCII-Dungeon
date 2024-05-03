@@ -6,6 +6,7 @@ import data.exceptions.GameLogicException;
 import data.interactive.Altxorra;
 import data.interactive.Jokalaria;
 import data.interactive.Monstroa;
+import data.interactive.Portal;
 import data.noInteractive.Estatikoa;
 import data.noInteractive.Formak;
 import render.GraficsConfig;
@@ -74,6 +75,8 @@ public class MapLoader {
             return new Estatikoa(Formak.DOOR);
         } else if (symbol == Formak.TREASURE.getSymbol()) {
             return new Altxorra(Formak.TREASURE, posizioa);
+        } else if (symbol == Formak.PORTAL.getSymbol()) {
+            return new Portal(Formak.PORTAL);
         }
         return null;
     }
