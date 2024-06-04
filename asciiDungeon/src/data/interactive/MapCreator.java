@@ -61,6 +61,7 @@ public class MapCreator extends GameObject {
             return gameMain.getMap().getMatrix();
         }
         GameObject[][] matrizea = gameMain.getMap().getMatrix();
+        // mapa sortzailearen azkeneko posizioa objetuarengatik aldatu
         try {
             matrizea[getX()][getY()] = objetua;
             setPosizioa(new Vector2(getX() + x, getY() + y));

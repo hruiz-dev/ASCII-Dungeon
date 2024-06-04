@@ -36,6 +36,7 @@ public class MapLoader {
             BufferedReader br = new BufferedReader(new FileReader(path));
             String line;
             int i = 0;
+            // Fitxategiaren lerro bakoitza irakurri
             while ((line = br.readLine()) != null) {
                 for (int j = 0; j < line.length(); j++) {
                         map[j][i] = kargatuObjetua(line.charAt(j), new Vector2(j, i));
@@ -50,7 +51,7 @@ public class MapLoader {
         } catch (GameLogicException e) {
             throw new RuntimeException(e);
         }
-
+        // Mapa kargatua itzuli
         return map;
     }
 

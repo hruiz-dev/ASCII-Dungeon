@@ -106,15 +106,17 @@ public class Jokalaria extends GameObject {
 
         alTxorraIreki(x, y);
 
+        // portalran sartu ezgero funtzioa bukatu
         if (portaleanSartu(x, y)) {
             return GameMainData.getInteractables().getMatrix();
         }
-
+        // mina artuezegero funtzioa bukatu
         if (kolisioa(x, y) || minaArtu(x, y)) {
             return matrizea;
         }
 
         try {
+            // Jokalaria mugitu
             matrizea[getX()][getY()] = null;
             setPosizioa(new Vector2(getX() + x, getY() + y));
         } catch (GameLogicException e) {
@@ -176,7 +178,7 @@ public class Jokalaria extends GameObject {
     public Boolean minaArtu(int x, int y) {
         GameObject objetua = GameMainData.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
-
+            // ikutu duen objetua monstroa bada honen atakea jasoko du
             if (objetua instanceof Monstroa) {
 
                 int atakea = ((Monstroa) objetua).getAtakea();
@@ -203,6 +205,7 @@ public class Jokalaria extends GameObject {
     public void ateaIreki(int x, int y) {
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
         GameObject[][] mapa = GameMainData.getMapa().getMatrix();
+        // matrizeko posizioa ez bada nuloa, giltza badut eta posizioa atea bada ateae ireki
         if (matrizea[getX() + x][getY() + y] != null) {
             if (matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.DOOR.getSymbol()) {
                 if (JokalariaData.getGiltzak() > 0) {
@@ -222,6 +225,7 @@ public class Jokalaria extends GameObject {
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
         GameObject objetua = matrizea[getX() + x][getY() + y];
         if (objetua != null) {
+            // ikutu duen objetua altxorra bada honen irabazia jasoko du
             if (objetua.getForma().getSymbol() == Formak.TREASURE.getSymbol()) {
                 ((Altxorra)  matrizea[getX() + x][getY() + y]).update();
             }

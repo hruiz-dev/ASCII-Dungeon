@@ -12,6 +12,9 @@ public class KonsolaPanel extends JPanel {
 
     private JLabel konsola = new JLabel();
 
+    /**
+     * KonsolaPanel klasearen konstruktorea
+     */
     public KonsolaPanel() {
         super();
         this.setSize(GraficsConfig.GAME_X_CANVAS_SIZE, 160);
@@ -22,7 +25,7 @@ public class KonsolaPanel extends JPanel {
     }
 
     /**
-     * Konsolako mezua ladatzen du
+     * Konsolako mezua aldatzen du
      * @param mezua Mezua
      */
     public void setMezua(String mezua){

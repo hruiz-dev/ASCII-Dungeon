@@ -44,6 +44,7 @@ public class Dirua extends Ui {
         a.setForeground(Color.WHITE);
         panel.add(a);
 
+        // diru kantitaea lortu eta jpanelan sartu
         JLabel b = new JLabel(Integer.toString(JokalariaData.getDirua()));
         b.setForeground(Color.WHITE);
         panel.add(b);

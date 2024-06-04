@@ -42,6 +42,7 @@ public class Arma extends Item {
 
         Vector2 pos = jokalaria.getPosizioa();
 
+        // Jokalariaren azken mugiamenduaren arabera nora begiratzen dagoen kalkulatu
         switch (jokalaria.getAzkenMugimendua()) {
             case 'w':
                 atakeaEgin(pos.getX(), pos.getY(), 0, 1);
@@ -72,6 +73,7 @@ public class Arma extends Item {
         int jStart = 0;
         int jEnd = 0;
 
+        // direzioaren arabera atakearen rangoa kalkulatu
         if (dirX == 1) {
             iStart = posX + 1;
             iEnd = posX + 2;
@@ -94,10 +96,7 @@ public class Arma extends Item {
             jEnd = posY - 1;
         }
 
-        // si el eje x=1 x = 1,2 ; se es x -1 x = -1,-2
-        // eje j -1,1
-        //si el eje j = 1 j = 1,2 ; se es j -1 j = -1,-2
-        // eje i -1,1
+        // Matrizean atakea egin
         for (int i = iStart; i <= iEnd; i++) {
             for (int j = jStart; j <= jEnd; j++) {
                 if (matriz[i][j] instanceof Monstroa) {

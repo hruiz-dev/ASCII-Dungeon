@@ -27,6 +27,9 @@ public class MapCreatorMain { ;
     private MapCreatorMain(){
     }
 
+    /**
+     * Mapa sortzen hasteko metodoa
+     */
     public void init(){
         background.getMatrix()[0][0] = MapCreator.getJokalaria();
         new Thread(this::update).start();
@@ -60,6 +63,7 @@ public class MapCreatorMain { ;
 
         StringBuilder sb = new StringBuilder();
 
+        // Mapa String batean pasatzen da
         for (int j = 0; j < GraficsConfig.GAME_Y_GRID_SIZE; j++) {
             for (int i = 0; i < GraficsConfig.GAME_X_GRID_SIZE; i++) {
                 if (background.getMatrix()[i][j] != null) {
@@ -73,6 +77,7 @@ public class MapCreatorMain { ;
 
         s1 = sb.toString();
 
+        // Mapa fitxategian gordetzen da
         try (FileWriter file = new FileWriter("map1Background.txt")) {
             file.write(s1);
             System.out.println("Mapako Backgrounda gordeta");

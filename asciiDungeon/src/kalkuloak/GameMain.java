@@ -41,9 +41,11 @@ public class GameMain {
             if (objetuak != null) {
 
                 GameObject[][] a = interactables.getMatrix();
+                // matrizeko objetu bakoitzeko update metodo exekutatu
                 for (GameObject go : objetuak) {
                     if (!go.getClass().equals(Estatikoa.class)) {
                         a = go.update();
+                        // Pantaila ez badago objetua borratzeko jarri
                         if (!go.getPatailan()){
                             borratzeko.add(go);
                         }
@@ -93,7 +95,7 @@ public class GameMain {
         while (jokoaMartxan) {
 
             if (uiKomponenteak != null) {
-
+            // Ui komponente guztiak aktualizatu
                 for (Ui ui : uiKomponenteak) {
                     ui.updateUi();
                 }
@@ -113,7 +115,9 @@ public class GameMain {
     public void gameOver() {
         jokoaMartxan = false;
         GameUi.getFrame().dispose();
+        //Trhead guztiak gelditu
         threads.forEach(Thread::interrupt);
+        // Menua erakutsi
         JFrame frame = new JFrame("Game Over");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
@@ -155,11 +159,14 @@ public class GameMain {
      * Metodo honk gure mapa hurrengo mapaengatik aldatzen du.
      */
     public void changeMap(){
+        // matrixak garbitu
         objetuak.clear();
         mapa.setMatrixNull();
         interactables.setMatrixNull();
         mapa.render();
         interactables.render();
+
+        // mapa aldatu
         int a = GameMainData.getMomentukoMapa();
         mapa.updateMatrix(MapLoader.kargatuBackground("mapa" + a + "Atzekaldea.txt" ));
         interactables.updateMatrix(MapLoader.kargatuBackground("mapa" + a + "Interaktiboa.txt" ));
@@ -169,9 +176,12 @@ public class GameMain {
      * Metodo honek jokua irabaztewan agertzen den menua erakusten du.
      */
     public void winGame() {
+        // Jokoa gelditu
         jokoaMartxan = false;
         GameUi.getFrame().dispose();
         threads.forEach(Thread::interrupt);
+
+        // Menua erakutsi
         JFrame frame = new JFrame("Irabazi duzu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);

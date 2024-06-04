@@ -27,6 +27,9 @@ public class Menu extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new GridBagLayout());
 
+        /**
+         * Exit botoia gehitu
+         */
         this.exit = new JButton("Exit");
         this.exit.addActionListener(e -> {
             System.exit(0);
@@ -42,6 +45,9 @@ public class Menu extends JFrame {
 
         bottomPanel.add(this.start);
 
+        /**
+         * Mapa sortzailea botoia gehitu
+         */
         this.createMap = new JButton("Mapa Sortzailea(Experimental)");
         this.createMap.addActionListener(e -> {
             this.dispose();

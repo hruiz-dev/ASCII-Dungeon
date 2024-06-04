@@ -46,7 +46,6 @@ public class Altxorra extends GameObject {
             GameMainData.getKonsola().setMezua("Altxorrean " + a + " txanpon aurkitu dituzu!");
         }
         return null;
-        //TODO: Maybe implementatu metodoa arma edo armadura ekipatzeko aukerarekin
 
     }
 }

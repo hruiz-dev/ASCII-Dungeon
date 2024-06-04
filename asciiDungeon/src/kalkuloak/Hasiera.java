@@ -25,6 +25,7 @@ public class Hasiera {
     public static void startMapBuilder(){
         JFrame frame = new JFrame();
         MapCreatorMain a = MapCreatorMain.getMapCreatorData();
+        // Interfazea sortu
         frame.add(a.getMapCreatorData().getMap().getPanel());
         frame.setSize(GraficsConfig.GAME_X_CANVAS_SIZE + 16, GraficsConfig.GAME_Y_CANVAS_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -16,10 +16,11 @@ public class UiPanel extends JPanel {
 
     public UiPanel() {
         super();
+        // Panealren koloreak eta tamaina definitu
         this.setSize(GraficsConfig.UI_X_CANVAS_SIZE, GraficsConfig.UI_Y_CANVAS_SIZE);
         this.setBackground(Color.BLACK);
         this.setLayout(new GridBagLayout());
-
+        // Informazio panelak gehitu
         this.add(Bizia.getBizia().getBiziaLayer().getPanel(), createConstrains(0, 0, 1, 1));
         this.add(ArmaduraUi.getArmaduraUi().getArmaduraLayer().getPanel(), createConstrains(1, 0, 1, 1));
 
@@ -27,12 +28,6 @@ public class UiPanel extends JPanel {
 
         this.add(Dirua.getDirua().getPanel(), createConstrains(0, 2, 2, 1));
 
-    }
-
-    private JLabel customLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setForeground(Color.WHITE);
-        return label;
     }
 
     /**

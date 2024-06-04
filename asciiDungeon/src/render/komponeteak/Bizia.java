@@ -45,11 +45,12 @@ public class Bizia extends Ui {
     public void updateUi() {
         float x = (float) Jokalaria.getJokalaria().getBizia() /4;
         int i = 0;
+        // Bizi hutsaren irudiak pintatu
         for (int j = 0; j < 5; j++) {
             this.getDatuak()[j][0] = null;
         }
+        // biziaren arabera bihotzak pintatu
         while (x > 0){
-
 
             float num = (x -1 > 0) ? 1 : x;
 

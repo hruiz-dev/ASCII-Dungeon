@@ -48,15 +48,18 @@ public class Monstroa extends GameObject {
      * @return GameObject[][] - Monstroaren posizio berria
      */
     public GameObject[][] mugitu(int x, int y) {
+
         if (x > GraficsConfig.GAME_X_GRID_SIZE || y > GraficsConfig.GAME_Y_GRID_SIZE) {
             return GameMainData.getInteractables().getMatrix();
         }
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
+        // jokalariarekin edo paretarekin kolisioa detektatu
 
         if (kolisioa(x, y) || jokalariaJo(x, y)) {
             return matrizea;
         }
         try {
+            // monstroa mugitu
             matrizea[getX()][getY()] = null;
             setPosizioa(new Vector2(getX() + x, getY() + y));
         } catch (GameLogicException e) {
@@ -87,8 +90,10 @@ public class Monstroa extends GameObject {
     public Boolean jokalariaJo(int x, int y) {
         GameObject objetua = GameMainData.getInteractables().getMatrix()[getX() + x][getY() + y];
         if (objetua != null) {
+            // Jotako objetua jokalaria den kombrobatu
             if (objetua instanceof Jokalaria) {
                 Jokalaria a = (Jokalaria) objetua;
+                // Joklariak defe badu bat kendu, bestela bizia kendu
                 if (((Jokalaria) objetua).getArmadura().getDefentsa() > 0){
                     a.getArmadura().setDefentsa(a.getArmadura().getDefentsa() - 1);
                     return true;

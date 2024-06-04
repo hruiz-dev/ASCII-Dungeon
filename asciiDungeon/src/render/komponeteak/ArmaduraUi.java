@@ -47,12 +47,14 @@ public class ArmaduraUi extends Ui {
             return;
         }
 
+        // Eskudo hutsaren irudiak pintatu
         for (int j = 0; j < 5; j++) {
             this.getDatuak()[j][0] = new Estatikoa(Formak.SHIELD3);
         }
 
         float eskudoa = (float) armadura.getDefentsa() /2;
         int i = 0;
+        // Eskudo osorik eta hutsaren irudiak pintatu
         while (eskudoa > 0){
             float num = (eskudoa -1 > 0) ? 1 : eskudoa;
             if (num <= 0.5) {
@@ -63,7 +65,7 @@ public class ArmaduraUi extends Ui {
             eskudoa -= 1;
             i++;
         }
-
+        // Eskudo hutsaren irudiak aktualizatu interfazean
         armaduraLayer.updateMatrix(this.getDatuak());
 
     }

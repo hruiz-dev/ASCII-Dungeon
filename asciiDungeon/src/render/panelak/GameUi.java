@@ -20,9 +20,10 @@ public class GameUi {
      */
     public GameUi() {
         JLayeredPane layeredPane = new JLayeredPane();
+        // Mapa eta interactables panelak gehitzen ditugu
         layeredPane.add(GameMainData.getMapa().getPanel(), JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(GameMainData.getInteractables().getPanel(), JLayeredPane.PALETTE_LAYER);
-
+        // Mapa eta interactables panelak rekolokatzen ditugu
         frame = new JFrame();
         frame.setLayout(new GridBagLayout());
 
@@ -31,12 +32,13 @@ public class GameUi {
         frame.add(GameMainData.getUi(), createConstrains(1, 0, 1, 4.8));
 
         frame.add(GameMainData.getKonsola(), createConstrains(0, 1, 6.6, 1));
-
+        // KeyListener-a gehitzen dugu
         frame.addKeyListener(new GameKeyListener());
         frame.setSize(GraficsConfig.GAME_X_FRAME_SIZE, GraficsConfig.GAME_Y_FRAME_SIZE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+
 
     public static JFrame getFrame() {
         return frame;

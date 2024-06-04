@@ -51,6 +51,7 @@ public class Giltzak extends Ui {
 
         int iMax = (giltzak > 5) ? 5 : giltzak;
 
+        // daukagun giltza bakoitzeko panelean gehitu
         for (int i = 0; i < iMax; i++) {
             this.getDatuak()[i][0] = new Estatikoa(Formak.KEY);
         }
