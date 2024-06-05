@@ -110,7 +110,7 @@ public class Jokalaria extends GameObject {
         if (portaleanSartu(x, y)) {
             return GameMainData.getInteractables().getMatrix();
         }
-        // mina artuezegero funtzioa bukatu
+        // mina hartuz gero funtzioa bukatu
         if (kolisioa(x, y) || minaArtu(x, y)) {
             return matrizea;
         }
@@ -205,6 +205,7 @@ public class Jokalaria extends GameObject {
     public void ateaIreki(int x, int y) {
         GameObject[][] matrizea = GameMainData.getInteractables().getMatrix();
         GameObject[][] mapa = GameMainData.getMapa().getMatrix();
+
         // matrizeko posizioa ez bada nuloa, giltza badut eta posizioa atea bada ateae ireki
         if (matrizea[getX() + x][getY() + y] != null) {
             if (matrizea[getX() + x][getY() + y].getForma().getSymbol() == Formak.DOOR.getSymbol()) {
